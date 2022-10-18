@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
+		http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-4.3.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
+	
+	<!-- Enables the Spring MVC @Controller programming model -->
+	<annotation-driven />
+
+	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
+	<resources mapping="/resources/**" location="/resources/" />
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+	
+	<!-- DB 접속 정보를 저장하는 객체 생성 -->
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+		<beans:property name="url" value="jdbc:oracle:thin:@127.0.0.1:1521:xe"/>
+		<beans:property name="username" value="mentt"/>
+		<beans:property name="password" value="1234"/>
+	</beans:bean>
+	
+	<!-- Mybatis 설정 객체 -->
+	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource"/>
+		<beans:property name="configLocation" value="classpath:mybatis-config.xml"/>
+		<beans:property name="mapperLocations" value="classpath:/mapper/*SQL.xml"/>
+	</beans:bean>
+	
+	<!-- DB 작업을 수행하는 객체 (JDBCTemplate 대신 사용) -->
+	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+		<beans:constructor-arg ref="sqlSession"/>
+	</beans:bean>
+	
+	<!-- 파일 업로드용 객체 생성 -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="maxUploadSize" value="10485760"/>
+	</beans:bean>
+	
+	<!-- 트랜잭션 관리 객체 -->
+	<beans:bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource"/>
+	</beans:bean>
+	
+	<!-- 트랜잭션 어노테이션 (@Transactional) 사용을 위한 설정 -->
+	<tx:annotation-driven/>
+	
+	<!-- 웹소켓 처리할 객체 생성
+	<beans:bean id="allMemberChat" class="kr.or.common.AllMemberChat"/>
+	-->
+	
+	<!-- 쪽지 소켓 처리할 객체 생성 
+	<beans:bean id="dmHandler" class="kr.or.dm.model.service.DirectMessageHandler"/>
+	-->
+	
+	<!-- 웹소켓 매핑
+	<websocket:handlers>
+		<websocket:mapping handler="allMemberChat" path="/chat.do"/>
+		<websocket:mapping handler="dmHandler" path="/dm.do"/>
+	</websocket:handlers>
+	 -->
+	
+	<!-- AOP : 클래스의 객체를 생성
+	<beans:bean id="logAdvice1" class="kr.or.common.LogAdvice1"/> 
+	<beans:bean id="logAdvice2" class="kr.or.common.LogAdvice2"/> 
+	<beans:bean id="bt" class="kr.or.common.BeforeAdvice"/>
+	<beans:bean id="ar" class="kr.or.common.AfterReturningAdvice"/>
+	<beans:bean id="around" class="kr.or.common.AroundAdvice"/>
+	
+	<aop:config>
+		기능 적용할 포인트컷 설정 (메소드 선정)
+		* : 리턴타입 상관없음 / kr.or.member.model.service 패키지의 MemberService 클래스 선택 / * : 메서드 이름 상관없음 / (..) : 매개변수 상관없음
+		<aop:pointcut expression="execution(* kr.or.member.model.service.MemberService.*(..))" id="allPointcut"/> 
+		* : 리턴타입 상관없음 / kr.or.member.model.service 패키지의 MemberService 클래스 선택 / selectOneMember : 메서드 이름이 selectOneMember인 것 / (..) : 매개변수 상관없음
+		<aop:pointcut expression="execution(* kr.or.member.model.service.MemberService.selectOneMember(..))" id="selectOne"/> 
+		<aop:pointcut expression="execution(* kr.or.member.model.service.MemberService.insertMember(..))" id="insertPointcut"/>
+		매개변수가 없는 것 중에 메서드 이름이 Member로 끝나는 것
+		<aop:pointcut expression="execution(* kr.or.member.model.service.MemberService.*Member())" id="selectAll"/> 
+		 
+		어떤 기능을 어디에 넣을 건지 연결
+		<aop:aspect ref="logAdvice1">
+			<aop:before method="testLog" pointcut-ref="selectOne"/> logAdvice1 객체의 testLog 메서드를 selectOne 포인트컷에다가 before 시점에 적용해줘
+		</aop:aspect>
+		<aop:aspect ref="logAdvice2">
+			<aop:before method="logging" pointcut-ref="allPointcut"/>
+		</aop:aspect>
+		 <aop:aspect ref="bt">
+		 	<aop:before method="beforeTest" pointcut-ref="allPointcut"/>
+		 </aop:aspect>
+		 <aop:aspect ref="bt">
+		 	<aop:before method="test2" pointcut-ref="insertPointcut"/>
+		 </aop:aspect>
+		 <aop:aspect ref="ar">
+		 	<aop:after-returning method="afterReturn" pointcut-ref="selectAll" returning="returnObj"/>
+		 </aop:aspect>
+		 <aop:aspect ref="around">
+		 	<aop:around method="aroundTest" pointcut-ref="allPointcut"/>
+		 </aop:aspect>
+	</aop:config>
+	-->
+	
+	<!-- AOP 어노테이션 (@Aspect) 활성화 -->
+	<aop:aspectj-autoproxy/>
+	
+	<!-- 예약작업관련 어노테이션 활성화 -->
+	<task:annotation-driven/>
+	
+	<!-- 1. servlet-context파일에 스캔했는지 2. 객체 생성 어노테이션을 붙였는지
+	<context:component-scan base-package="kr.or.iei" />
+	<context:component-scan base-package="kr.or.member" />
+	<context:component-scan base-package="kr.or.board" />
+	<context:component-scan base-package="kr.or.common" />
+	<context:component-scan base-package="kr.or.dm" />
+	<context:component-scan base-package="common" />
+	 -->
+	
+</beans:beans>
