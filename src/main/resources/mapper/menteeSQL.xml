@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="mentee">
+	<select id="selectOneMentee" parameterType="m" resultType="m">
+		select
+			M_NO as mNo,
+			M_ID as mId,
+			M_PW as mPw,
+			M_NAME as mName,
+			phone,
+			ENROLL_DATE as enrollDate,
+			AGREE_PROMOTION as agreePromotion
+		from mentee_tbl
+		where M_ID = #{mId} and M_PW = #{mPw}
+	</select>
+</mapper>
