@@ -83,7 +83,6 @@
 	<beans:bean id="bt" class="kr.or.common.BeforeAdvice"/>
 	<beans:bean id="ar" class="kr.or.common.AfterReturningAdvice"/>
 	<beans:bean id="around" class="kr.or.common.AroundAdvice"/>
-	
 	<aop:config>
 		기능 적용할 포인트컷 설정 (메소드 선정)
 		* : 리턴타입 상관없음 / kr.or.member.model.service 패키지의 MemberService 클래스 선택 / * : 메서드 이름 상관없음 / (..) : 매개변수 상관없음
