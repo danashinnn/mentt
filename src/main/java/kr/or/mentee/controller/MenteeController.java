@@ -26,10 +26,16 @@ public class MenteeController {
 	@RequestMapping(value = "/login.do")
 	public String login(Mentee mentee, HttpSession session) {
 		Mentee m = menteeService.selectOneMentee(mentee);
-		
-		if(m != null) {
+
+		if (m != null) {
 			session.setAttribute("m", m);
 		}
+		return "redirect:/";
+	}
+
+	@RequestMapping(value = "/logout.do")
+	public String logout(HttpSession session) {
+		session.invalidate();
 		return "redirect:/";
 	}
 
