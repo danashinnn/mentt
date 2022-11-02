@@ -125,10 +125,10 @@
 	<!-- 1. servlet-context파일에 스캔했는지 2. 객체 생성 어노테이션을 붙였는지
 	<context:component-scan base-package="kr.or.iei" />
 	<context:component-scan base-package="kr.or.member" />
-	<context:component-scan base-package="kr.or.board" />
-	<context:component-scan base-package="kr.or.common" />
 	<context:component-scan base-package="kr.or.dm" />
-	<context:component-scan base-package="common" />
 	 -->
+	<context:component-scan base-package="kr.or.notice" />
+	<context:component-scan base-package="kr.or.common" />
+	<context:component-scan base-package="common" />
 	
 </beans:beans>
