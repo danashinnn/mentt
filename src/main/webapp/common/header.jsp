@@ -66,7 +66,7 @@
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
-      <a href="/common/courses.jsp" class="get-started-btn">Get Started</a>
+      <a href="/loginFrm.do" class="get-started-btn">로그인|회원가입</a>
 
     </div>
   </header><!-- End Header -->
