@@ -130,5 +130,6 @@
 	<context:component-scan base-package="common" />
 	 -->
 	<context:component-scan base-package="kr.or.mentee" />
+	<context:component-scan base-package="kr.or.mento"></context:component-scan>
 	
 </beans:beans>
