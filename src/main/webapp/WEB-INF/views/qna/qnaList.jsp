@@ -4,6 +4,7 @@
 <html lang="ko">
 
 <head>
+	<link href="/resources/assets/css/qnaList.css" rel="stylesheet">
   	<link href="/resources/assets/img/favicon.png" rel="icon">
 </head>
 
@@ -26,31 +27,122 @@
       <div class="container" data-aos="fade-up">
 
         <div class="row">
-          <div class="col-md-6 d-flex align-items-stretch">
-            <div class="card">
-              <div class="card-img">
-                <img src="/resources/assets/img/events-1.jpg" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Introduction to webdesign</a></h5>
-                <p class="fst-italic text-center">Sunday, September 26th at 7:00 pm</p>
-                <p class="card-text">Lorem ipsum dolor sit amet, consectetur elit, sed do eiusmod tempor ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 d-flex align-items-stretch">
-            <div class="card">
-              <div class="card-img">
-                <img src="/resources/assets/img/events-2.jpg" alt="...">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><a href="">Marketing Strategies</a></h5>
-                <p class="fst-italic text-center">Sunday, November 15th at 7:00 pm</p>
-                <p class="card-text">Sed ut perspiciatis unde omnis iste natus error sit voluptatem doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo</p>
-              </div>
-            </div>
-
-          </div>
+          
+          <div class="qna-wrap">
+	        <!-- board list area -->
+	        <div id="board-list">
+	           <div class="container">
+	               <table class="board-table">
+	                   <thead>
+	                   <tr>
+	                       <th scope="col" class="th-num" style="width:10%;">번호</th>
+	                       <th scope="col" class="th-title" style="width:45%;">제목</th>
+	                       <th scope="col" class="th-title" style="width:15%;">작성자</th>
+	                       <th scope="col" class="th-date" style="width:20%;">등록일</th>
+	                       <th scope="col" class="th-date" style="width:10%;">조회수</th>
+	                   </tr>
+	                   </thead>
+	                   <tbody>
+	                   <tr>
+	                       <td>10</td>
+	                       <td>
+	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
+	                       </td>
+	                       <td>와와</td>
+	                       <td>2022-11-01</td>
+	                       <td>1</td>
+	                   </tr>
+	                   <tr>
+	                       <td>9</td>
+	                       <td>
+	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
+	                       </td>
+	                       <td>와와</td>
+	                       <td>2022-11-01</td>
+	                       <td>1</td>
+	                   </tr>
+	                   <tr>
+	                       <td>8</td>
+	                       <td>
+	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
+	                       </td>
+	                       <td>와와</td>
+	                       <td>2022-11-01</td>
+	                       <td>1</td>
+	                   </tr>
+	                   <tr>
+	                       <td>7</td>
+	                       <td>
+	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
+	                       </td>
+	                       <td>와와</td>
+	                       <td>2022-11-01</td>
+	                       <td>1</td>
+	                   </tr>
+	                   <tr>
+	                       <td>6</td>
+	                       <td>
+	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
+	                       </td>
+	                       <td>와와</td>
+	                       <td>2022-11-01</td>
+	                       <td>1</td>
+	                   </tr>
+	                   <tr>
+	                       <td>5</td>
+	                       <td>
+	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
+	                       </td>
+	                       <td>와와</td>
+	                       <td>2022-11-01</td>
+	                       <td>1</td>
+	                   </tr>
+	                   <tr>
+	                       <td>4</td>
+	                       <td>
+	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
+	                       </td>
+	                       <td>와와</td>
+	                       <td>2022-11-01</td>
+	                       <td>1</td>
+	                   </tr>
+	                   <tr>
+	                       <td>3</td>
+	                       <td>
+	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
+	                       </td>
+	                       <td>와와</td>
+	                       <td>2022-11-01</td>
+	                       <td>1</td>
+	                   </tr>
+	                   <tr>
+	                       <td>2</td>
+	                       <td>
+	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
+	                       </td>
+	                       <td>와와</td>
+	                       <td>2022-11-01</td>
+	                       <td>1</td>
+	                   </tr>
+	                   <tr>
+	                       <td>1</td>
+	                       <td>
+	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
+	                       </td>
+	                       <td>와와</td>
+	                       <td>2022-11-01</td>
+	                       <td>1</td>
+	                   </tr>
+	                   </tbody>
+	               </table>
+	           </div>
+	       </div>
+	       <div class="qna-btn-wrap">
+	           <a class="qna-btn qna-btn-list" href="/qnaWriteFrm.do" style="color:#fff;">글쓰기</a>
+	       </div>
+	       <div id="pageNavi"></div>
+	   </div>
+          
         </div>
 
       </div>
@@ -72,7 +164,12 @@
 
   <!-- Template Main JS File -->
   <script src="/resources/assets/js/main.js"></script>
-
+  <!-- <script src="/resources/assets/js/qnaList.js"></script> -->
+  <script>
+	function goToQnaView(reqPage, qnaNo) {
+		location.href = "/qnaView.do?reqPage="+reqPage+"&qnaNo="+qnaNo;
+	}
+  </script>
 </body>
 
 </html>
