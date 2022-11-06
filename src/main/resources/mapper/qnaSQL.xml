@@ -1,4 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="qna">
+	<select id="selectQnaList" parameterType="map" resultType="q">
+		 SELECT * 
+		 FROM (SELECT ROWNUM AS RNUM, Q.* 
+		 FROM (SELECT 
+		    qna_no as qnaNo, 
+		    qna_title as qnaTitle, 
+		    qna_writer as qnaWriter, 
+		    qna_reg_date as qnaRegDate,
+		    qna_read_count as qnaReadCount
+		FROM QNA_TBL
+		ORDER BY QNA_NO DESC)Q) 
+		WHERE RNUM BETWEEN #{start} AND #{end}
+	</select>
+
+	<select id="selectQnaCount" resultType="int">
+		select count(*) from qna_tbl
+	</select>
 </mapper>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -43,104 +44,27 @@
 	                   </tr>
 	                   </thead>
 	                   <tbody>
-	                   <tr>
-	                       <td>10</td>
-	                       <td>
-	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
-	                       </td>
-	                       <td>와와</td>
-	                       <td>2022-11-01</td>
-	                       <td>1</td>
-	                   </tr>
-	                   <tr>
-	                       <td>9</td>
-	                       <td>
-	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
-	                       </td>
-	                       <td>와와</td>
-	                       <td>2022-11-01</td>
-	                       <td>1</td>
-	                   </tr>
-	                   <tr>
-	                       <td>8</td>
-	                       <td>
-	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
-	                       </td>
-	                       <td>와와</td>
-	                       <td>2022-11-01</td>
-	                       <td>1</td>
-	                   </tr>
-	                   <tr>
-	                       <td>7</td>
-	                       <td>
-	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
-	                       </td>
-	                       <td>와와</td>
-	                       <td>2022-11-01</td>
-	                       <td>1</td>
-	                   </tr>
-	                   <tr>
-	                       <td>6</td>
-	                       <td>
-	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
-	                       </td>
-	                       <td>와와</td>
-	                       <td>2022-11-01</td>
-	                       <td>1</td>
-	                   </tr>
-	                   <tr>
-	                       <td>5</td>
-	                       <td>
-	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
-	                       </td>
-	                       <td>와와</td>
-	                       <td>2022-11-01</td>
-	                       <td>1</td>
-	                   </tr>
-	                   <tr>
-	                       <td>4</td>
-	                       <td>
-	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
-	                       </td>
-	                       <td>와와</td>
-	                       <td>2022-11-01</td>
-	                       <td>1</td>
-	                   </tr>
-	                   <tr>
-	                       <td>3</td>
-	                       <td>
-	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
-	                       </td>
-	                       <td>와와</td>
-	                       <td>2022-11-01</td>
-	                       <td>1</td>
-	                   </tr>
-	                   <tr>
-	                       <td>2</td>
-	                       <td>
-	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
-	                       </td>
-	                       <td>와와</td>
-	                       <td>2022-11-01</td>
-	                       <td>1</td>
-	                   </tr>
-	                   <tr>
-	                       <td>1</td>
-	                       <td>
-	                           <a onclick="goToQnaView();" style="color: #252a34; cursor:pointer;">글제목 글제목 글제목</a>
-	                       </td>
-	                       <td>와와</td>
-	                       <td>2022-11-01</td>
-	                       <td>1</td>
-	                   </tr>
+	                   <c:forEach items="${list }" var="q">
+							<tr>
+								<td>${q.qnaNo }</td>
+								<td>
+									<a href="/qnaView.do?reqPage=${reqPage }&qnaNo=${q.qnaNo }" style="color: #252a34; cursor:pointer;">${q.qnaTitle }</a>
+								</td>
+								<td>${q.qnaWriter }</td>
+								<td>${q.qnaRegDate }</td>
+								<td>${q.qnaReadCount }</td>
+							</tr>
+					   </c:forEach>
 	                   </tbody>
 	               </table>
 	           </div>
 	       </div>
-	       <div class="qna-btn-wrap">
-	           <a class="qna-btn qna-btn-list" href="/qnaWriteFrm.do" style="color:#fff;">글쓰기</a>
-	       </div>
-	       <div id="pageNavi"></div>
+	       <c:if test="${not empty sessionScope.m.memberId }">
+		       <div class="qna-btn-wrap">
+		           <a class="qna-btn qna-btn-list" href="/qnaWriteFrm.do" style="color:#fff;">글쓰기</a>
+		       </div>
+	       </c:if>
+	       <div id="pageNavi">${pageNavi }</div>
 	   </div>
           
         </div>
@@ -164,12 +88,6 @@
 
   <!-- Template Main JS File -->
   <script src="/resources/assets/js/main.js"></script>
-  <!-- <script src="/resources/assets/js/qnaList.js"></script> -->
-  <script>
-	function goToQnaView(reqPage, qnaNo) {
-		location.href = "/qnaView.do?reqPage="+reqPage+"&qnaNo="+qnaNo;
-	}
-  </script>
 </body>
 
 </html>

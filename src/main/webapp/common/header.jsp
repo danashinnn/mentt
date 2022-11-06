@@ -66,7 +66,7 @@
               </li>
               <li><a href="#">Drop Down 2</a></li>
               <li><a href="/faqList.do">FAQ</a></li>
-              <li><a href="/qnaList.do">QNA</a></li>
+              <li><a href="/qnaList.do?reqPage=1">QNA</a></li>
             </ul>
           </li>
           <li><a href="/common/contact.jsp">Contact</a></li>
