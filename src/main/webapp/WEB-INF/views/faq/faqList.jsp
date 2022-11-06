@@ -4,7 +4,7 @@
 <html lang="ko">
 
 <head>
-	<link href="/resources/assets/css/faqList.css" rel="stylesheet">
+	<link href="/resources/assets/css/qna/faqList.css" rel="stylesheet">
   	<link href="/resources/assets/img/favicon.png" rel="icon">
 </head>
 

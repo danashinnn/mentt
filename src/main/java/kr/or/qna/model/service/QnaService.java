@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.common.FileVO;
 import kr.or.qna.model.dao.QnaDao;
 import kr.or.qna.model.vo.Qna;
 
@@ -83,5 +84,12 @@ public class QnaService {
 		map.put("pageNavi", pageNavi);
 		map.put("list", list);
 		return map;
+	}
+
+	public Qna selectQnaView(int qnaNo) {
+		Qna q = dao.selectQnaView(qnaNo);
+		ArrayList<FileVO> fileList = dao.selectFileList(qnaNo);
+		q.setFileList(fileList);
+		return q;
 	}
 }

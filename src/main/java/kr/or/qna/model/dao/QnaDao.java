@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.common.FileVO;
 import kr.or.qna.model.vo.Qna;
 
 @Repository
@@ -23,5 +24,14 @@ public class QnaDao {
 	
 	public int selectQnaCount() {
 		return sqlSession.selectOne("qna.selectQnaCount");
+	}
+
+	public Qna selectQnaView(int qnaNo) {
+		return sqlSession.selectOne("qna.selectQnaView", qnaNo);
+	}
+
+	public ArrayList<FileVO> selectFileList(int qnaNo) {
+		List list = sqlSession.selectList("qna.selectFileList", qnaNo);
+		return (ArrayList<FileVO>) list;
 	}
 }
