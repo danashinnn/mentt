@@ -27,6 +27,12 @@
 
   <!-- Template Main CSS File -->
   <link href="/resources/assets/css/style.css" rel="stylesheet">
+  
+  <!-- jQuery 추가 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- fontawesome icon 추가 -->
+  <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 
     <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
@@ -59,8 +65,8 @@
                 </ul>
               </li>
               <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="/faqList.do">FAQ</a></li>
+              <li><a href="/qnaList.do">QNA</a></li>
             </ul>
           </li>
           <li><a href="/common/contact.jsp">Contact</a></li>
