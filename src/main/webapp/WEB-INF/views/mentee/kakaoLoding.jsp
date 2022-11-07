@@ -5,12 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.6.1.js"></script>
 </head>
 <body>
+	<div style="height: 600px; vertical-align: middle;">
 	<h1>로딩 중........</h1>
-
-
-
+	</div>
 	<script type="text/javascript">
 		// 카카오 최초 로그인시 DB에 정보넣기
 		$(document).ready(function() {
@@ -35,7 +35,7 @@
 						data : param, // 인가코드 보내기
 						contentType : "application/json; charset=UTF-8",
 						success : function(res) {
-							location.href = "/main/mainPage" // 연동 성공 시 메인페이지로 이동하기
+							location.href = "/index.jsp" // 연동 성공 시 메인페이지로 이동하기
 						},
 						error : function(xhr, type) {
 							console.log(xhr);
