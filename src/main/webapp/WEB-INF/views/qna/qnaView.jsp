@@ -66,15 +66,12 @@
         </div>
         
         <div class="qna-button-wrap">
-            
-            <c:if test="${sessionScope.m eq q.qnaWriter }">
-            	<button class="qna-btn qna-btn-remove" onclick="qnaUpdate();">수정</button>
-            	<button class="qna-btn qna-btn-remove" onclick="qnaDelete();">삭제</button>
-            </c:if>
-            
             <a class="qna-btn qna-btn-list" href="/qnaList.do?reqPage=${reqPage}">목록</a>
+            <c:if test="${sessionScope.m.MId eq q.qnaWriter}">
+            	<button class="qna-btn qna-btn-remove" onclick="qnaDelete();">삭제</button>
+            	<button class="qna-btn qna-btn-remove" onclick="qnaUpdate();">수정</button>
+            </c:if>
         </div>
-	        
 	        
 	   	  </div>
           
