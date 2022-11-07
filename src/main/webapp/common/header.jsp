@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -26,6 +27,12 @@
 
   <!-- Template Main CSS File -->
   <link href="/resources/assets/css/style.css" rel="stylesheet">
+  
+  <!-- jQuery 추가 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- fontawesome icon 추가 -->
+  <script src="https://kit.fontawesome.com/7b7a761eb5.js" crossorigin="anonymous"></script>
 
     <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
@@ -58,16 +65,22 @@
                 </ul>
               </li>
               <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
+              <li><a href="/faqList.do">FAQ</a></li>
+              <li><a href="/qnaList.do?reqPage=1">QNA</a></li>
             </ul>
           </li>
           <li><a href="/common/contact.jsp">Contact</a></li>
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
-      <a href="/loginFrm.do" class="get-started-btn">로그인|회원가입</a>
-
+	<c:choose>
+		<c:when test="${empty sessionScope.m }">
+      		<a href="/loginFrm.do" class="get-started-btn">로그인</a>
+     	</c:when>
+     	<c:otherwise>
+     		<a href="/myPageFrm.do" class="get-started-btn">마이페이지</a>
+     		<a href="/logout.do" class="get-started-btn">로그아웃</a>
+     	</c:otherwise>
+	</c:choose>
     </div>
   </header><!-- End Header -->

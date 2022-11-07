@@ -7,12 +7,14 @@
 	</settings>
 	<typeAliases>
 	<!-- 
-		<typeAlias type="kr.or.member.model.vo.Member" alias="m"/>
 		<typeAlias type="kr.or.member.model.vo.MemberNewPassword" alias="mnp"/>
 		<typeAlias type="kr.or.board.model.vo.Board" alias="b"/>
 		<typeAlias type="kr.or.board.model.vo.FileVO" alias="f"/>
 		<typeAlias type="kr.or.dm.model.vo.DirectMessage" alias="dm"/>
 	 -->
-	 <typeAlias type="kr.or.notice.model.vo.Notice" alias="n"/>
+		<typeAlias type="kr.or.mentee.model.vo.Mentee" alias="m"/>
+		<typeAlias type="kr.or.notice.model.vo.Notice" alias="n"/>
+		<typeAlias type="kr.or.qna.model.vo.Qna" alias="q"/>
+		<typeAlias type="kr.or.common.FileVO" alias="f"/>
 	</typeAliases>
 </configuration>
