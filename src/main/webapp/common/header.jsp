@@ -49,7 +49,7 @@
           <li><a href="/common/courses.jsp">Courses</a></li>
           <li><a href="/common/trainers.jsp">Trainers</a></li>
           <li><a href="/common/events.jsp">이벤트</a></li>
-          <li><a href="/common/notice.jsp">공지사항</a></li>
+          <li><a href="/noticeList.do?reqPage=1">공지사항</a></li>
           <li><a href="/common/pricing.jsp">가격안내</a></li>
 
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>

@@ -20,6 +20,6 @@ public class MenteeService {
 	}
 
 	public boolean checkId(String kakao_email) {
-		return ;
+		return false;
 	}
 }

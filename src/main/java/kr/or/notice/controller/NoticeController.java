@@ -13,16 +13,22 @@ import kr.or.notice.model.vo.NoticePageData;
 public class NoticeController {
 	@Autowired
 	private NoticeService service;
-	@Autowired
-	private FileRename fileRename;
 	
-	@RequestMapping(value="/boardList.do")
-	public String boardList(int reqPage,Model model) {
-		NoticePageData bpd = service.selectNoticeList(reqPage);
+	@RequestMapping(value="/noticeList.do")
+	public String boardList(int reqPage, Model model) {
+		/*
+		  NoticePageData bpd = service.selectNoticeList(reqPage);
 		model.addAttribute("list",bpd.getList());
 		model.addAttribute("pageNavi",bpd.getPageNavi());
 		model.addAttribute("reqPage",bpd.getReqPage());
 		model.addAttribute("numPerPage",bpd.getNumPerPage());
+		return "notice/noticeList";	
+		 */
+		NoticePageData npd = service.selectNoticeList(reqPage);
+		model.addAttribute("list", npd.getList());
+		model.addAttribute("pageNavi",npd.getPageNavi());
+		model.addAttribute("reqPage", npd.getReqPage());
+		model.addAttribute("numPerPage", npd.getNumPerPage());
 		return "notice/noticeList";	
 	}
 }
