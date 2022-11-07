@@ -35,7 +35,7 @@
 						data : param, // 인가코드 보내기
 						contentType : "application/json; charset=UTF-8",
 						success : function(res) {
-							location.href = "/index.jsp" // 연동 성공 시 메인페이지로 이동하기
+							location.href = "http://121.140.3.181" // 연동 성공 시 메인페이지로 이동하기
 						},
 						error : function(xhr, type) {
 							console.log(xhr);

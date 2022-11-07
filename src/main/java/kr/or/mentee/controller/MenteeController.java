@@ -89,16 +89,15 @@ public class MenteeController {
 		System.out.println("------- nickname ------- : " + userInfo.get("nickname")); // 회원 이름
 
 		// 가져온 회원 정보 DB에 넣어 회원가입 시키기
-		Mentee mentee = new Mentee();
+//		Mentee mentee = new Mentee();
 		String kakao_email = (String) userInfo.get("email"); // 회원 아이디
 		String kakao_nickname = (String) userInfo.get("nickname"); // 회원 이름
 
 //		// 만약 DB에 해당 회원의 ID가 없다면 회원가입 시키기
-//		if (!userService.checkId(kakao_email)) {
-//			log.info("유저 회원가입");
+//		if (!menteeService.checkId(kakao_email)) {
 //			mentee.setMId(kakao_email);
 //			mentee.setMName(kakao_nickname);
-//			userService.joinKakao(mentee);
+//			menteeService.joinKakao(mentee);
 //		}
 		// 만약 이미 회원가입 된 회원이라면? 로그인하기
 		HttpSession session = req.getSession(); // session 생성

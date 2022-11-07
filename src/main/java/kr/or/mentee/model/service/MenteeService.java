@@ -18,4 +18,8 @@ public class MenteeService {
 	public Mentee selectOneMentee(Mentee mentee) {
 		return menteeDao.selectOneMentee(mentee);
 	}
+
+	public boolean checkId(String kakao_email) {
+		return ;
+	}
 }
