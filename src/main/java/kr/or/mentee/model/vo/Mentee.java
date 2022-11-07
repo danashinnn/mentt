@@ -11,6 +11,7 @@ public class Mentee {
 	private int mNo;
 	private String mId;
 	private String mPw;
+	private String mName;
 	private String phone;
 	private String enrollDate;
 	private String agreePromotion;
