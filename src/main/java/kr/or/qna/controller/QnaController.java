@@ -30,4 +30,12 @@ public class QnaController {
 		model.addAttribute("pageNavi", map.get("pageNavi"));
 		return "qna/qnaList";
 	}
+	
+	@RequestMapping(value="/qnaView.do") 
+	public String selectQnaView(int reqPage, int qnaNo, Model model){
+		Qna q = service.selectQnaView(qnaNo);
+		model.addAttribute("reqPage", reqPage);
+		model.addAttribute("q", q);
+		return "qna/qnaView";
+	}
 }

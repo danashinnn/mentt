@@ -5,7 +5,7 @@
 <html lang="ko">
 
 <head>
-	<link href="/resources/assets/css/qnaList.css" rel="stylesheet">
+	<link href="/resources/assets/css/qna/qnaList.css" rel="stylesheet">
   	<link href="/resources/assets/img/favicon.png" rel="icon">
 </head>
 
@@ -59,7 +59,7 @@
 	               </table>
 	           </div>
 	       </div>
-	       <c:if test="${not empty sessionScope.m.memberId }">
+	       <c:if test="${sessionScope.m ne null}">
 		       <div class="qna-btn-wrap">
 		           <a class="qna-btn qna-btn-list" href="/qnaWriteFrm.do" style="color:#fff;">글쓰기</a>
 		       </div>

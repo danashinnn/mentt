@@ -18,4 +18,26 @@
 	<select id="selectQnaCount" resultType="int">
 		select count(*) from qna_tbl
 	</select>
+	
+	<select id="selectQnaView" parameterType="int" resultType="q">
+		select
+		    qna_no as qnaNo, 
+		    qna_title as qnaTitle, 
+		    qna_content as qnaContent,
+		    qna_writer as qnaWriter, 
+		    qna_reg_date as qnaRegDate,
+		    qna_read_count as qnaReadCount
+		from qna_tbl
+		where qna_no = #{_parameter}
+	</select>
+	
+	<select id="selectFileList" parameterType="int" resultType="f">
+		select
+			file_no as fileNo,
+			filename,
+			filepath,
+			file_ext as fileExt
+		from file_tbl
+		where ref_no = #{_parameter} and file_divi = 'Q'
+	</select>
 </mapper>
