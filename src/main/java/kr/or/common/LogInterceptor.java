@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.HandlerInterceptor;
 
-import com.sun.java.util.jar.pack.Package.Class.Member;
+import kr.or.mentee.model.vo.Mentee;
 
 public class LogInterceptor implements HandlerInterceptor{
 
@@ -15,7 +15,7 @@ public class LogInterceptor implements HandlerInterceptor{
 		boolean isLogin = true;
 		
 		if(!request.getRequestURI().equals("/")) {
-			Member m = (Member)request.getSession().getAttribute("m");
+			Mentee m = (Mentee)request.getSession().getAttribute("m");
 			if(m == null){
 				response.sendRedirect("/");
 				isLogin = false;
