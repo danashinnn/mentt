@@ -17,6 +17,7 @@ public class NoticeService {
 
 	public NoticePageData selectNoticeList(int reqPage) {
 		//한페이지당 보여줄 게시물 수
+		System.out.println("service:"+reqPage);
 				int numPerPage = 5;
 				//reqPage에 게시물 번호 읽어오기
 				//reqPage=1 -> 1-5 | reqPage=2 -> 6-10
@@ -27,6 +28,7 @@ public class NoticeService {
 				map.put("start",start);
 				map.put("end",end);
 				ArrayList<Notice>list = dao.selectNoticeList(map);
+				System.out.println("controller:"+list);
 				//pageNavi 시작
 				//전체페이지 수 계산필요 -> 전체 게시물 수 조회
 				//전체게시물 수
@@ -45,44 +47,6 @@ public class NoticeService {
 				if(reqPage>3) {
 					pageNo = reqPage -2;
 				}
-				/*
-				String pageNavi="<ul class='pagination circle-style'>";
-				if(pageNo !=1) {
-					 pageNavi +="<li>";
-					 pageNavi +="<a class='page-item' href='/NoticeList.do?reqPage="+(pageNo-1)+"'>";
-					 pageNavi +="<span class='material-icons'>chevron_left</span>";
-					 pageNavi +="</a></li>";
-				 }
-				for(int i =0;i<pageNaviSize;i++) {
-					 if(pageNo == reqPage) {
-						 pageNavi +="<li>";
-						 pageNavi +="<a class='page-item active-page' href='/NoticeList.do?reqPage="+pageNo+"'>";
-						 pageNavi += pageNo;
-						 //pageNavi +="<span class='material-icons'>chevron_left</span>";
-						 pageNavi +="</a></li>";
-					 }else {
-						 pageNavi +="<li>";
-						 pageNavi +="<a class='page-item' href='/NoticeList.do?reqPage="+pageNo+"'>";
-						 pageNavi += pageNo;
-						 //pageNavi +="<span class='material-icons'>chevron_left</span>";
-						 pageNavi +="</a></li>";
-					 }
-					 pageNo++;
-					 if(pageNo>totalPage) {
-						break; 
-					 }
-				 }
-				 //다음버튼
-				 if(pageNo<=totalPage) {
-					 pageNavi +="<li>";
-					 pageNavi +="<a class='page-item' href='/NoticeList.do?reqPage="+pageNo+"'>";
-					 pageNavi +="<span class='material-icons'>chevron_right</span>";
-					 pageNavi +="</a></li>";
-				 }
-				 pageNavi += "</ul>";
-				 NoticePageData bpd = new NoticePageData(list,pageNavi,reqPage,numPerPage);
-				 return bpd;
-				 */
 				
 				//pageNavi 생성 시작
 				String pageNavi = "";
@@ -102,11 +66,11 @@ public class NoticeService {
 						break;
 					}
 				}
-				//다음버툰
+				//다음버툰P
 				if(pageNo<=totalPage) {
 					pageNavi +="<a href='/boardList.do?reqPage="+pageNo+"'>[다음]</a>";
 				}
-				NoticePageData npd = new NoticePageData(list,pageNavi, pageNo, pageNo);
+				NoticePageData npd = new NoticePageData(list, pageNavi, reqPage, numPerPage);
 				return npd;
 			}
 	}

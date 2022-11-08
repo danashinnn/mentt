@@ -37,7 +37,7 @@
 					</tr>
 					<c:forEach items="${list }" var="n" varStatus="i">
 						<tr style="height: 50px;">
-							<td>${n.noticeNum }</td>
+							<td>${(reqPage-1)*numPerPage+i.count }</td>
 							<td><a href="/noticeView.do?noticeNo=${n.noticeNo }">${n.noticeTitle }</a></td>
 							<td>${n.noticeWriter }</td>
 							<td>${n.noticeDate }</td>
