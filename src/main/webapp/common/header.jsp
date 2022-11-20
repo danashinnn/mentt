@@ -54,7 +54,7 @@
 
           <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="/insertMentoFrm.do">고수등록</a></li>
+              <li><a href="/insertMentoFrm.do">멘토등록</a></li>
               <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
                   <li><a href="#">드롭다운1</a></li>

@@ -1,0 +1,34 @@
+.mento-register-wrap{
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 200px;
+}
+
+.register-title>h1{
+	text-align: center;
+}
+
+.mentoFrm{
+	margin-top: 80px;
+}
+
+input[name=mentoId]{
+	width: 300px;
+}
+
+input[name=mentoName]{
+	width: 300px;
+}
+
+.member-info{
+	display: flex;
+	justify-content: center;
+}
+
+.member-info>div:first-child {
+	margin-right: 30px;
+}
+
+.member-info>div:last-child {
+	margin-left: 30px;
+}
