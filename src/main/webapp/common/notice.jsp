@@ -54,15 +54,15 @@
 			<div class="container" data-aos="fade-up">
 
 				<h1>공지사항</h1>
-				<h1>전체회원조회</h1>
 				<hr>
 
 				<table border="1">
 					<tr>
 						<th>게시물 번호</th>
 						<th>제목</th>
-						<th>글쓴이</th>
-						<th>글쓴날</th>
+						<th>작성자</th>
+						<th>작성일</th>
+						<th>조회수</th>
 					</tr>
 					<c:forEach items="${list }" var="b" varStatus="i">
 						<tr>
@@ -71,6 +71,7 @@
 							<td class="noticeTitle">${b.noticeTitle }</td>
 							<td>${b.noticeWriter }</td>
 							<td>${b.noticeDate }</td>
+							<td>${b.noticeReadCount }</td>
 						</tr>
 					</c:forEach>
 					<tfoot>

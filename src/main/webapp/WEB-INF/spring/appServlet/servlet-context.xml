@@ -132,5 +132,4 @@
 	<context:component-scan base-package="kr.or.mentee" />
 	<context:component-scan base-package="kr.or.mento"></context:component-scan>
 	<context:component-scan base-package="kr.or.qna" />
-	
-</beans:beans>
+	<context:component-scan base-package="kr.or.notice" /> </beans:beans>

@@ -1,5 +1,7 @@
 package kr.or.notice.model.vo;
 
+import java.util.ArrayList;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +10,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Notice {
-	private  int noticeNo;
+	private  int noticeNo; //고유번호
+	private int noticeNum; //공지사항시퀀스랑 이벤트 시퀀스랑 구분
 	private	String noticeTitle; //제목
 	private String noticeContent; //내용
 	private String noticeDate; //게시물 작성일
@@ -22,4 +25,5 @@ public class Notice {
 	private String chgNoticeWriter; //게시물 수정자(member_id참조)
 	private String chgNoticeIp; //게시물 수정자 ip
 	private String chgNoticeTime; //게시물 수정일 (yyyy-mm-dd hh24:mi:ss)
+	private ArrayList<FileVo> fileList;
 }

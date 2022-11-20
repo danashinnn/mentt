@@ -17,6 +17,8 @@ public class NoticeDao {
 
 	public ArrayList<Notice> selectNoticeList(HashMap<String, Object> map) {
 		List list = sqlSession.selectList("notice.selectNoticeList", map);
+		System.out.println("dao1:"+map);
+		System.out.println("dao.:"+list);
 		return (ArrayList<Notice>)list;
 	}
 

@@ -1,0 +1,31 @@
+@charset "UTF-8";
+table {
+	margin: 0 auto; 
+	width: 100%;
+	text-align: center;
+	border: none;
+	font-size: 1.2em;
+}
+tr td {
+	text-align: center;
+}
+tr{
+	height: 35px;
+}
+
+.mag20 {
+	margin-bottom: 20px;
+}
+#pageNavi{
+	font-size: 1.5em;
+}
+.riteBtn{
+	border: 1px solid #5fcf80;
+	padding: 5px;
+	background-color: #5fcf80;
+	color:#fff;
+	border-radius: 5px;
+}
+.pagination {
+	justify-content: center;
+}
