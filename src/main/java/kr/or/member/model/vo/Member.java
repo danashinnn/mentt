@@ -1,4 +1,4 @@
-package kr.or.mentee.model.vo;
+package kr.or.member.model.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Mentee {
+public class Member {
 	private int mNo;
 	private String mId;
 	private String mPw;

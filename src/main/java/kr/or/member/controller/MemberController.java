@@ -1,4 +1,4 @@
-package kr.or.mentee.controller;
+package kr.or.member.controller;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -22,26 +22,26 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
-import kr.or.mentee.model.service.MenteeService;
-import kr.or.mentee.model.vo.Mentee;
+import kr.or.member.model.service.MemberService;
+import kr.or.member.model.vo.Member;
 
 @Controller
-public class MenteeController {
+public class MemberController {
 	@Autowired
-	private MenteeService menteeService;
+	private MemberService memberService;
 
-	public MenteeController() {
+	public MemberController() {
 		super();
 	}
 
 	@RequestMapping(value = "/loginFrm.do")
 	public String loginFrm() {
-		return "mentee/loginFrm";
+		return "member/loginFrm";
 	}
 
 	@RequestMapping(value = "/login.do")
-	public String login(Mentee mentee, HttpSession session) {
-		Mentee m = menteeService.selectOneMentee(mentee);
+	public String login(Member member, HttpSession session) {
+		Member m = memberService.selectOneMentee(member);
 
 		if (m != null) {
 			session.setAttribute("m", m);
