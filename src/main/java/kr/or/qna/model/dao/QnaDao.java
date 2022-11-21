@@ -34,4 +34,16 @@ public class QnaDao {
 		List list = sqlSession.selectList("qna.selectFileList", qnaNo);
 		return (ArrayList<FileVO>) list;
 	}
+
+	public int insertQna(Qna q) {
+		return sqlSession.insert("qna.insertQna", q);
+	}
+
+	public int selectQnaNo() {
+		return sqlSession.selectOne("qna.selectQnaNo");
+	}
+
+	public int insertFile(FileVO file) {
+		return sqlSession.insert("qna.insertFile", file);
+	}
 }
