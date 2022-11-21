@@ -15,8 +15,8 @@ public class MemberService {
 		super();
 	}
 
-	public Member selectOneMentee(Member member) {
-		return memberDao.selectOneMentee(member);
+	public Member selectOneMember(Member member) {
+		return memberDao.selectOneMember(member);
 	}
 
 	public boolean checkId(String kakao_email) {
