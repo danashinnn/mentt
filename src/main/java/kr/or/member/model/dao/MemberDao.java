@@ -15,7 +15,7 @@ public class MemberDao {
 		super();
 	}
 
-	public Member selectOneMentee(Member member) {
-		return sqlSession.selectOne("member.selectOneMentee", member);
+	public Member selectOneMember(Member member) {
+		return sqlSession.selectOne("member.selectOneMember", member);
 	}
 }

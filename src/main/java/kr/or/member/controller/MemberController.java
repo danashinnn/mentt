@@ -41,7 +41,7 @@ public class MemberController {
 
 	@RequestMapping(value = "/login.do")
 	public String login(Member member, HttpSession session) {
-		Member m = memberService.selectOneMentee(member);
+		Member m = memberService.selectOneMember(member);
 
 		if (m != null) {
 			session.setAttribute("m", m);
