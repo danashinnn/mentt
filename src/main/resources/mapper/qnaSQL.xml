@@ -40,4 +40,16 @@
 		from file_tbl
 		where ref_no = #{_parameter} and file_divi = 'Q'
 	</select>
+	
+	<insert id="insertQna" parameterType="q">
+		INSERT INTO QNA_TBL VALUES(QNA_SEQ.NEXTVAL, 2, #{qnaTitle}, #{qnaContent}, 0, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), #{qnaWriter}, null, 'N')
+	</insert>
+	
+	<select id="selectQnaNo">
+		select max(qna_no) from qna_tbl
+	</select>
+	
+	<insert id="insertFile">
+		insert into file_tbl values(file_seq.nextval, #{filename}, #{filepath}, #{fileExt}, 'Q', #{reqNo}, 'N')
+	</insert>
 </mapper>

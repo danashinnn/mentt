@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.or.common.FileVO;
 import kr.or.notice.model.vo.Notice;
 
 @Repository
@@ -25,5 +26,18 @@ public class NoticeDao {
 	public int selectNoticeCount() {
 		int totalCount = sqlSession.selectOne("notice.totalCount");
 		return totalCount;
+	}
+
+	public Notice selectOneNotice(int noticeNo) {
+		// TODO Auto-generated method stub
+		Notice n = sqlSession.selectOne("notice.selectOneNotice",noticeNo);
+		System.out.println("여기가 문제일껄? "+n);
+		return n;
+	}
+
+	public ArrayList<FileVO> selectFileList(int noticeNo) {
+		// TODO Auto-generated method stub
+		List list = sqlSession.selectList("notice.selectFileList",noticeNo);
+		return (ArrayList<FileVO>)list;
 	}
 }

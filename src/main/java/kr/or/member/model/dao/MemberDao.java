@@ -1,21 +1,21 @@
-package kr.or.mentee.model.dao;
+package kr.or.member.model.dao;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.or.mentee.model.vo.Mentee;
+import kr.or.member.model.vo.Member;
 
 @Repository
-public class MenteeDao {
+public class MemberDao {
 	@Autowired
 	private SqlSessionTemplate sqlSession;
 
-	public MenteeDao() {
+	public MemberDao() {
 		super();
 	}
 
-	public Mentee selectOneMentee(Mentee mentee) {
-		return sqlSession.selectOne("mentee.selectOneMentee", mentee);
+	public Member selectOneMember(Member member) {
+		return sqlSession.selectOne("member.selectOneMember", member);
 	}
 }

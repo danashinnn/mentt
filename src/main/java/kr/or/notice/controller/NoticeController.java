@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.notice.model.service.NoticeService;
+import kr.or.notice.model.vo.Notice;
 import kr.or.notice.model.vo.NoticePageData;
 
 @Controller
@@ -41,5 +42,12 @@ public class NoticeController {
 		model.addAttribute("reqPage", npd.getReqPage());
 		model.addAttribute("numPerPage", npd.getNumPerPage());
 		return "notice/noticeList";	
+	}
+	
+	@RequestMapping(value="/noticeView.do")
+	public String noticeView(int noticeNo, Model model) {
+		Notice n = service.selectOneNotice(noticeNo);
+		model.addAttribute("n",n);
+		return "notice/noticeView";
 	}
 }

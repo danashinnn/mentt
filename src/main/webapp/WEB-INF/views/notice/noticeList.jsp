@@ -88,7 +88,6 @@
 			location.href = "/noticeView.do?noticeNo=" + noticeNo;
 		});
 	</script>
-</body>
 
 </body>
 </html>

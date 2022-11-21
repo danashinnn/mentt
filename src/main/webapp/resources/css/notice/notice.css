@@ -1,0 +1,26 @@
+@charset "UTF-8";
+
+.pagination {
+	list-style: none;
+	display: inline-block;
+}
+
+.pagination>li {
+	display: inline-block;
+	margin: 0 5px 0 5px;
+	width: 20px;
+	height: 25px;
+	border: 1px solid black;
+	text-align: center;
+	border: 1px solid #293243;
+	background: #222;
+	cursor: pointer;
+}
+
+.pagination>li>a {
+	width: 20px;
+	height: 25px;
+	text-decoration: none;
+	color: #fff;
+	outline: none;
+}
