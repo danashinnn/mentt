@@ -39,4 +39,19 @@
 		filepath
 	from file_tbl where ref_no = #{noticeNo}
 	</select>
+	<!--  
+	<resultMap type="" id="getNotice">
+		<result column="notice_no" property="noticeNo"/>
+		<result column="notice_title" property="noticeTitle"/>
+		<result column="notice_writer" property="noticeWriter"/>
+		<result column="notice_content" property="noticeContent"/>
+		<result column="notice_date" property="noticeDate"/>
+		<collection property="fileList"
+					select="selectFileList" 
+					column="notice_no"
+					ofType="f"
+					javaType="java.util.ArrayList"
+		/>
+	</resultMap>	
+	-->
 </mapper>

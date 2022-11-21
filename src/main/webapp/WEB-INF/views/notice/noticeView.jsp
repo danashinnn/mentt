@@ -65,7 +65,6 @@
 -->
 
 
-
 <jsp:include page="/common/footer.jsp" />
 
 	<div id="preloader"></div>
@@ -81,5 +80,16 @@
 		src="/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
 	<script src="/resources/assets/vendor/php-email-form/validate.js"></script>
+
+	<!-- Template Main JS File -->
+	<script src="/resources/assets/js/main.js"></script>
+	<script>
+		$(".noticeNo").hide();
+		$(".noticeTitle").on("click", function() {
+			const noticeNo = $(this).prev().text();
+			location.href = "/noticeView.do?noticeNo=" + noticeNo;
+		});
+	</script>
+
 </body>
 </html>
