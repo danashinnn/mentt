@@ -92,4 +92,19 @@ public class QnaService {
 		q.setFileList(fileList);
 		return q;
 	}
+
+	public int insertQna(Qna q, ArrayList<FileVO> fileList) {
+		int result = dao.insertQna(q);
+		if(result > 0) {
+			int qnaNo = 0;
+			if(!fileList.isEmpty()) {
+				qnaNo = dao.selectQnaNo();
+				for(FileVO file : fileList) {
+					file.setReqNo(qnaNo);
+					result += dao.insertFile(file);
+				}
+			}
+		}
+		return result;
+	}
 }
