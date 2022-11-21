@@ -6,6 +6,7 @@ import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.or.common.FileVO;
 import kr.or.notice.model.dao.NoticeDao;
 import kr.or.notice.model.vo.Notice;
 import kr.or.notice.model.vo.NoticePageData;
@@ -73,6 +74,15 @@ public class NoticeService {
 				NoticePageData npd = new NoticePageData(list, pageNavi, reqPage, numPerPage);
 				return npd;
 			}
+
+	public Notice selectOneNotice(int noticeNo) {
+		// notice테이블 조회
+		Notice n = dao.selectOneNotice(noticeNo);
+		//file_tbl 조회
+		ArrayList<FileVO> list = dao.selectFileList(noticeNo);
+		n.setFileList(list);
+		return n;
+	}
 	}
 
 

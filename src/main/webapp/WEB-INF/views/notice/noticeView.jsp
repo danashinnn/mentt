@@ -6,49 +6,52 @@
 <head>
 
 <meta charset="UTF-8">
-<link href="/resources/assets/css/notice/noticeList.css" rel="stylesheet">
+<link href="/resources/assets/css/notice/noticeView.css" rel="stylesheet">
 <link href="/resources/assets/img/favicon.png" rel="icon">
 </head>
-
 <body>
 <jsp:include page="/common/header.jsp" />
 
-<main id="main">
-
-		<!-- ======= Breadcrumbs ======= -->
+	<!-- ======= Breadcrumbs ======= -->
 		<div class="breadcrumbs" data-aos="fade-in">
 			<div class="container">
-				<h2>공지사항</h2>
-				<p>mentt의 소식을 가장 빠르게 알려드립니다!</p>
+				<h2>공지사항 상세보기</h2>
 			</div>
 		</div>
 		<!-- End Breadcrumbs -->
 
-		<!-- ======= Events Section ======= -->
+
+<!-- ======= Events Section ======= -->
 		<section id="events" class="events">
 			<div class="container" data-aos="fade-up">
 				<table border="1">
 					<tr style="height: 50px; background-color: #f8f9fa;">
 						<th>NO</th>
+						<th>${n.noticeNo }</th>
 						<th>제목</th>
-						<th>작성자</th>
-						<th>작성일</th>
-						<th>조회수</th>
+						<th>${n.noticeTitle }</th>
 					</tr>
-					<c:forEach items="${list }" var="n" varStatus="i">
-						<tr style="height: 50px;">
-							<td>${(reqPage-1)*numPerPage+i.count }</td>
-							<td><a href="/noticeView.do?noticeNo=${n.noticeNo }">${n.noticeTitle }</a></td>
-							<td>${n.noticeWriter }</td>
-							<td>${n.noticeDate }</td>
-							<td>${n.noticeReadCount }</td>
-						</tr>
-					</c:forEach>
-					<tfoot>
-						<tr style="height: 50px;">
-							<td colspan="5"><div id="pageNavi" style="height: 50px; line-height: 50px;">${pageNavi }</div></td>
-						</tr>
-					</tfoot>
+					<tr>
+						<th>작성자</th>
+						<td>${n.noticeWriter }</td>
+						<th>작성일</th>
+						<td>${n.noticeDate }</td>
+					</tr>
+					<tr>
+						<th>첨부파일</th>
+						<td colspan="3">
+						<c:forEach items="${b.fileList }" var="f">
+							<p>
+								<a href="#">${f.filename }</a>
+							</p>
+						</c:forEach>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="4">
+							${n.noticeContent }
+						</td>
+					</tr>
 				</table>
 
 
@@ -59,11 +62,11 @@
 			</div>
 		</section>
 		<!-- End Events Section -->
+-->
 
-	</main>
-	<!-- End #main -->
 
-	<jsp:include page="/common/footer.jsp" />
+
+<jsp:include page="/common/footer.jsp" />
 
 	<div id="preloader"></div>
 	<a href="#"
@@ -78,16 +81,5 @@
 		src="/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
 	<script src="/resources/assets/vendor/php-email-form/validate.js"></script>
-
-	<!-- Template Main JS File -->
-	<script src="/resources/assets/js/main.js"></script>
-	<script>
-		$(".noticeNo").hide();
-		$(".noticeTitle").on("click", function() {
-			const noticeNo = $(this).prev().text();
-			location.href = "/noticeView.do?noticeNo=" + noticeNo;
-		});
-	</script>
-
 </body>
 </html>

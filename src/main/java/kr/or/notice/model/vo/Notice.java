@@ -2,6 +2,7 @@ package kr.or.notice.model.vo;
 
 import java.util.ArrayList;
 
+import kr.or.common.FileVO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,5 +26,5 @@ public class Notice {
 	private String chgNoticeWriter; //게시물 수정자(member_id참조)
 	private String chgNoticeIp; //게시물 수정자 ip
 	private String chgNoticeTime; //게시물 수정일 (yyyy-mm-dd hh24:mi:ss)
-	private ArrayList<FileVo> fileList;
+	private ArrayList<FileVO> fileList;
 }

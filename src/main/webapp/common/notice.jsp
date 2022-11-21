@@ -7,32 +7,7 @@
 <head>
 <link href="/resources/assets/img/favicon.png" rel="icon">
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<style>
-.pagination {
-	list-style: none;
-	display: inline-block;
-}
-
-.pagination>li {
-	display: inline-block;
-	margin: 0 5px 0 5px;
-	width: 20px;
-	height: 25px;
-	border: 1px solid black;
-	text-align: center;
-	border: 1px solid #293243;
-	background: #222;
-	cursor: pointer;
-}
-
-.pagination>li>a {
-	width: 20px;
-	height: 25px;
-	text-decoration: none;
-	color: #fff;
-	outline: none;
-}
-</style>
+<link href="/resources/css/notice/notice.css" rel="stylesheet">
 </head>
 <body>
 
@@ -66,12 +41,13 @@
 					</tr>
 					<c:forEach items="${list }" var="b" varStatus="i">
 						<tr>
+						<!-- i.count:반복회차(1부터시작) / i.index(0부터시작) -->
 							<td>${(reqPage-1)*numPerPage + i.count }</td>
 							<td class="noticeNo">${b.noticeNo }</td>
 							<td class="noticeTitle">${b.noticeTitle }</td>
-							<td>${b.noticeWriter }</td>
-							<td>${b.noticeDate }</td>
-							<td>${b.noticeReadCount }</td>
+							<td class="noticeWriter">${b.noticeWriter }</td>
+							<td class="noticeDate">${b.noticeDate }</td>
+							<td class="noticeReadCount">${b.noticeReadCount }</td>
 						</tr>
 					</c:forEach>
 					<tfoot>
