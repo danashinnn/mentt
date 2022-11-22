@@ -52,4 +52,16 @@
 	<insert id="insertFile">
 		insert into file_tbl values(file_seq.nextval, #{filename}, #{filepath}, #{fileExt}, 'Q', #{reqNo}, 'N')
 	</insert>
+	
+	<select id="selectOneFile" parameterType="int" resultType="f">
+		select
+			file_no as fileNo,
+			filename,
+			filepath,
+			file_ext as fileExt,
+			file_divi as fileDivi,
+			ref_no as refNo
+		from file_tbl
+		where file_no = #{_parameter}
+	</select>
 </mapper>

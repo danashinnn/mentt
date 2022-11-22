@@ -55,7 +55,7 @@
 	            		</c:when>
 	            		<c:otherwise>
 	            			<c:forEach items="${q.fileList }" var="f">
-								<p>${f.filename }${f.fileExt }</p>
+								<p><a href="/fileDown.do?fileNo=${f.fileNo }">${f.filename }${f.fileExt }</a></p>
 							</c:forEach>
 	            		</c:otherwise>
 	            	</c:choose>
