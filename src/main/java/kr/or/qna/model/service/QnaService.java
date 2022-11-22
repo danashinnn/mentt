@@ -107,4 +107,8 @@ public class QnaService {
 		}
 		return result;
 	}
+
+	public FileVO selectOneFile(int fileNo) {
+		return dao.selectOneFile(fileNo);
+	}
 }
