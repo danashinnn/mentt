@@ -1,1 +1,30 @@
 @charset "UTF-8";
+.tb{
+	border-color: none;
+    text-align: center;
+    width: 100%;
+}
+.ta{
+	text-align: left;
+}
+.wt_300{
+	width: 300px;
+}
+.wt_200{
+	width: 200px;
+}
+.wt_100{
+	width: 100px;
+}
+.wt_50{
+	width: 50px;
+}
+.riteBtn{
+	border: 1px solid #5fcf80;
+	background-color: #5fcf80;
+	color:#fff;
+	border-radius: 5px;
+}
+
+
+
