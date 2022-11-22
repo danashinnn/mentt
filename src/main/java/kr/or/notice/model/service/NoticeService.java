@@ -3,6 +3,7 @@ package kr.or.notice.model.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import org.apache.ibatis.jdbc.SQL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -82,6 +83,12 @@ public class NoticeService {
 		ArrayList<FileVO> list = dao.selectFileList(noticeNo);
 		n.setFileList(list);
 		return n;
+	}
+
+	public int insertNotice(Notice n) {
+		// TODO Auto-generated method stub
+		
+		return dao.insertNotice(n);
 	}
 	}
 

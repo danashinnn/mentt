@@ -1,29 +1,25 @@
 @charset "UTF-8";
 .tb{
-	border-color: none;
+	border: none;
     text-align: center;
     width: 100%;
 }
+td,th{
+	border: 1px solid #6c757d73 !important;
+}
 .ta{
 	text-align: left;
-}
-.wt_300{
-	width: 300px;
-}
-.wt_200{
-	width: 200px;
-}
-.wt_100{
-	width: 100px;
-}
-.wt_50{
-	width: 50px;
 }
 .riteBtn{
 	border: 1px solid #5fcf80;
 	background-color: #5fcf80;
 	color:#fff;
-	border-radius: 5px;
+	border-radius: 40px;
+}
+.listBtn{
+	width:65%;
+	text-align: right;
+	margin: 0 auto;
 }
 
 

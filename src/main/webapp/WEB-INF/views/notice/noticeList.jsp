@@ -7,6 +7,7 @@
 
 <meta charset="UTF-8">
 <link href="/resources/assets/css/notice/noticeList.css" rel="stylesheet">
+<link href="/resources/css/notice/basic.css" rel="stylesheet">
 <link href="/resources/assets/img/favicon.png" rel="icon">
 </head>
 

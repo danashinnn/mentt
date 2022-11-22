@@ -1,0 +1,44 @@
+@charset "UTF-8";
+/*배경색*/
+.back_g{
+	background-color: #e9ecef;
+}
+.back_w{
+	background-color: #fff;
+}
+.back_gn{
+	background-color: #83c998;
+}
+/*글꼴 색상*/
+.white{
+	color:white;
+}
+/*가로 길이*/
+.wt_300{
+	width: 300px;
+}
+.wt_200{
+	width: 200px;
+}
+.wt_100{
+	width: 100px;
+}
+.wt_50{
+	width: 50px;
+}
+
+/*세로 길이*/
+.hi_50{
+	height: 50px;	
+}
+.hi_30{
+	height: 50px;	
+}
+.hi_500{
+	height: 500px;	
+}
+
+/*패딩*/
+.pd_10{
+	padding: 10px;
+}

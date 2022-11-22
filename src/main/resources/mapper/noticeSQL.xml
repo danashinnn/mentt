@@ -54,4 +54,22 @@
 		/>
 	</resultMap>	
 	-->
+	<insert id="insertNotice" parameterType="n">
+	
+	insert into notice_tbl values(
+	    NOTICE_SEQ.nextval,
+	    #{noticeTitle},
+	    #{noticeContent},
+	    to_char(sysdate,'yyyy-mm-dd'),
+	    #{noticeWriter},
+	    sys_context('userenv','IP_ADDRESS'),
+	    null,
+	    null,
+	    0,
+	    0,
+	    'n',
+	    null,
+	    null,
+	    null)
+	</insert>
 </mapper>

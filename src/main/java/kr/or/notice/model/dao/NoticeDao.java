@@ -40,4 +40,10 @@ public class NoticeDao {
 		List list = sqlSession.selectList("notice.selectFileList",noticeNo);
 		return (ArrayList<FileVO>)list;
 	}
+
+	public int insertNotice(Notice n) {
+		// TODO Auto-generated method stub
+		int result = sqlSession.insert("notice.insertNotice",n);
+		return result;
+	}
 }
