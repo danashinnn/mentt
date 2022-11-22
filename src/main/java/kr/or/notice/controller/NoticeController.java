@@ -67,7 +67,7 @@ public class NoticeController {
 		int result = service.insertNotice(n);
 		System.out.println("결과result"+result);
 		if(result>0) {
-			return "redirect:/noticeList.do";
+			return "redirect:/noticeList.do?reqPage=1";
 		}else {
 			model.addAttribute("msg", "글쓰기에 실패하셨습니다.");
 			model.addAttribute("url","/noticeList.do?reqPage=1");
