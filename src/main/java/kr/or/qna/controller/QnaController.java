@@ -1,14 +1,18 @@
 package kr.or.qna.controller;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -124,5 +128,41 @@ public class QnaController {
 		// DB에 insert
 		int result = service.insertQna(q, fileList);
 		return "redirect:/qnaList.do?reqPage=1";
+	}
+	
+	@RequestMapping(value="/fileDown.do")
+	public void fileDown(int fileNo, HttpServletRequest request, HttpServletResponse response) {
+		FileVO file = service.selectOneFile(fileNo);
+		String path = request.getSession().getServletContext().getRealPath("/resources/upload/qna/") + file.getFilepath() + file.getFileExt();
+		
+		try {
+			// 파일을 읽어오기 위한 스트림 생성
+			FileInputStream fis = new FileInputStream(path);
+			BufferedInputStream bis = new BufferedInputStream(fis);
+			// 읽어온 파일을 사용자에게 내보내기 위한 스트림 생성
+			ServletOutputStream sos = response.getOutputStream();
+			BufferedOutputStream bos = new BufferedOutputStream(sos);
+			// 파일명 처리 (다운로드 할 때는 유저가 올린 파일명 그대로 받을 수 있게)
+			String downFileName = new String((file.getFilename()+file.getFileExt()).getBytes("utf-8"),"ISO-8859-1");
+			// 파일 다운로드를 위한 http 헤더 설정
+			response.setContentType("application/octet-stream");
+			response.setHeader("Content-Disposition", "attachment;filename="+downFileName);
+			// 파일 전송
+			while(true) {
+				int read = bis.read(); // 읽어오기
+				if(read != -1) { // 데이터가 없으면(읽어올 게 없으면) -1 리턴
+					bos.write(read); // 내보내기
+				} else {
+					break;
+				}
+			}
+			// 자원 반환
+			bis.close();
+			bos.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

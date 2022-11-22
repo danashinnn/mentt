@@ -46,4 +46,8 @@ public class QnaDao {
 	public int insertFile(FileVO file) {
 		return sqlSession.insert("qna.insertFile", file);
 	}
+
+	public FileVO selectOneFile(int fileNo) {
+		return sqlSession.selectOne("qna.selectOneFile", fileNo);
+	}
 }
