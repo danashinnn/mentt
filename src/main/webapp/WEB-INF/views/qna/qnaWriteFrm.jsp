@@ -50,7 +50,7 @@
 		        </div>
 		       
 		        <div class="qna-button-wrap">
-		            <button type="button" class="qna-btn">등록</button>
+		            <button type="button" id="qna-submit-btn" class="qna-btn">등록</button>
 		            <a class="qna-btn qna-btn-list" href="/qnaList.do?reqPage=1">취소</a>
 		        </div>
 	   </form>     
