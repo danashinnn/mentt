@@ -64,4 +64,8 @@
 		from file_tbl
 		where file_no = #{_parameter}
 	</select>
+	
+	<update id="updateQnaReadCount" parameterType="int">
+		update qna_tbl set qna_read_count = (qna_read_count+1) where qna_no = #{_parameter}
+	</update>
 </mapper>

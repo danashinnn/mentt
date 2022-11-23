@@ -50,4 +50,8 @@ public class QnaDao {
 	public FileVO selectOneFile(int fileNo) {
 		return sqlSession.selectOne("qna.selectOneFile", fileNo);
 	}
+
+	public int updateQnaReadCount(int qnaNo) {
+		return sqlSession.update("qna.updateQnaReadCount", qnaNo);
+	}
 }

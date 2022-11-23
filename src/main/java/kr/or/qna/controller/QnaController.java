@@ -125,8 +125,8 @@ public class QnaController {
 		} // else 영역 끝
 		q.setQnaWriter(m.getMId());
 		// DB에 insert
-		int result = service.insertQna(q, fileList);
-		return "redirect:/qnaList.do?reqPage=1";
+		int qnaNo = service.insertQna(q, fileList);
+		return "redirect:/qnaView.do?reqPage=1&qnaNo="+qnaNo;
 	}
 	
 	@RequestMapping(value="/fileDown.do")
