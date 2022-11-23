@@ -18,7 +18,7 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs" data-aos="fade-in">
       <div class="container">
-        <h2>QNA</h2>
+        <h2>Q&A</h2>
         <p>당신의 멘토가 직접 답변해드립니다!</p>
       </div>
     </div><!-- End Breadcrumbs -->

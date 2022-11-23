@@ -117,14 +117,13 @@ public class QnaController {
 				}
 				// 파일 1개 업로드 끝
 				FileVO fileVO = new FileVO();
-				fileVO.setFilename(filename);
+				fileVO.setFilename(onlyFilename);
 				fileVO.setFilepath(filepath);
 				fileVO.setFileExt(extension);
 				fileList.add(fileVO);
 			} // 파일 업로드 반복문 끝
 		} // else 영역 끝
 		q.setQnaWriter(m.getMId());
-		System.out.println(q);
 		// DB에 insert
 		int result = service.insertQna(q, fileList);
 		return "redirect:/qnaList.do?reqPage=1";

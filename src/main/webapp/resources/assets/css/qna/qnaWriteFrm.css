@@ -67,6 +67,16 @@ a:focus a:hover{
     margin-top: 50px;
     margin-bottom: 50px;
     width: 100%;
+    display:flex;
+    justify-content:center;
+}
+.qna-content > textarea {
+	width : 1100px;
+	height: 300px;
+	outline:none;
+	resize:none;
+	border:1px solid #eee;
+	padding: 10px;
 }
 .qna-button-wrap{
     overflow: hidden;
