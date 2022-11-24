@@ -16,5 +16,7 @@
 		<typeAlias type="kr.or.notice.model.vo.Notice" alias="n"/>
 		<typeAlias type="kr.or.qna.model.vo.Qna" alias="q"/>
 		<typeAlias type="kr.or.common.FileVO" alias="f"/>
+		<typeAlias type="kr.or.mento.model.vo.Mento" alias="mt"/>
+		<typeAlias type="kr.or.mento.model.vo.MentoLiseceFile" alias="mtl"/>
 	</typeAliases>
 </configuration>

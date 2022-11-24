@@ -44,32 +44,35 @@
 		.theme{
 			width: 100px;
 			height: 40px;
-			background-color: #5fcf80;
+			background-color: white;
 			text-align: center;
 			line-height: 40px;
 			border-radius: 20px;
-			color: white;
 			display: inline-block;
+			border:1px solid gray;
+			color: gray;
 		}
 		
 		.theme:hover {
-			background-color: #99FF66;
+			
 			cursor: pointer;
 		}
 		
 		.mojor{
 			width: 100px;
 			height: 40px;
-			background-color: #5fcf80;
+			background-color: white;
 			text-align: center;
 			line-height: 40px;
 			border-radius: 10px;
 			color: white;
 			display: inline-block;
+			border:1px solid gray;
+			color: gray;
 		}
 		
 		.mojor:hover{
-			background-color: #99FF66;
+			
 			cursor: pointer;
 		}
 		
@@ -105,6 +108,15 @@
 		  overflow: hidden;
 		  clip: rect(0, 0, 0, 0);
 		  border: 0;
+		}
+		
+		.fileList>div{
+			position: relative;
+		}
+		
+		.delFile{
+			position: absolute;
+			right: 0px;
 		}
 	</style>
     <!-- ======= Header ======= -->
@@ -297,18 +309,19 @@
 	      		<div>
 	      			<div class="filebox" style="line-height: 50px; text-align: center; margin-left: 30px;">
 					  <label for="ex_file">업로드</label>
-					  <input type="file" id="ex_file" multiple="multiple">
+					  <input type="file" id="ex_file" name="exFile" multiple="multiple">
 					</div>
 	      		</div>
 	      	</div>
 	      </div>
 	      
-	      <div class="fileList" >
+	     
+	      <div class="fileList" style="width: 500px; margin: 0 auto; margin-top: 20px; padding-top: 20px; padding-bottom: 20px; display: none; border-top: 1px solid lightgray; border-bottom: 1px solid lightgray;">
 	      	
 	      </div>
 	      
 	      <div class="mentoBtnFrm" style="text-align: center; margin-top: 50px; border-top: 1px solid lightgray; padding-top: 50px; margin-bottom: 50px;">
-	      	<button type="button" class="btn btn-success" style="background-color: #5fcf80; border-color: #5fcf80;">등록하기</button>
+	      	<button type="button" class="btn btn-success" style="background-color: #5fcf80; border-color: #5fcf80;" id="insertMento">등록하기</button>
 	      </div>
 
     </div>
@@ -322,6 +335,115 @@
   
   <script type="text/javascript">
   
+  
+  	const fileArr = new Array();
+  	
+  	$("#ex_file").on("change", function(){
+  		
+  		console.log("열려라!");
+  		const files = $("#ex_file")[0].files;
+  		if(files > 5){
+  			alert("파일은 5개를 넘을 수 없습니다.");
+  		}else{
+  			$(".fileList").slideDown();
+  			for(let i = 0; i < files.length; i++){
+  				fileArr.push(files[i]);
+  				
+  				console.log(fileArr.length);
+  				const div = $("<div>");
+  				if(fileArr.length > 5){
+  					alert("파일은 최대 5개를 넘을 수 없습니다.");
+  					fileArr.pop();
+  					break;
+  				}
+  				div.append("<span>" + files[i].name + "</span><span class='delFile' onclick='delFile(this)'>x</span>");
+  				$(".fileList").append(div);
+  			}
+  		}
+  		
+  	});
+  	
+  	function delFile(obj){
+  		
+  		const fileName = $(obj).prev().text(); 
+  		
+  		for(let i = 0; i < fileArr.length; i++){
+  			if(fileArr[i].name == fileName){
+  				fileArr.splice(i,1);
+  				break;
+  			}
+  		}
+  		
+  		if(fileArr.length == 0){
+  			$(".fileList").slideUp();
+  		}
+  		
+  		$(obj).parent().remove();
+  		console.log(fileArr.length)
+  		
+  	}
+  	
+  	$("#insertMento").on("click", function(){
+  		console.log($("[name=mentoMajor]:checked").length);
+		
+  		let major = "";
+  		
+  		const mNo = $("[name=mNo]").val();
+  		const mentoName = $("[name=mentoName]").val();
+  		const mentoId = $("[name=mentoId]").val();
+  		$("[name=mentoMajor]:checked").each(function(index){
+  			if(index != 0){
+  				major += ",";
+  			}
+  			major += $(this).val();
+  		});
+  		const mojorTheme = $("[name=mojorTheme]:checked").val();
+  		
+  		
+  		if($("[name=mentoMajor]:checked").length > 5){
+  			alert("최대 5개를 선택할 수 있습니다.");
+  			$(this).attr("type", "button");
+  		}else if($("[name=mentoMajor]:checked").length == 0){
+  			alert("과목을 선택하세요!");
+  			$(this).attr("type", "button");
+  		}else if($("[name=mentoMajor]:checked").length != fileArr.length){
+  			alert("선택 수와 같은 파일을 넣어야 합니다.");
+  			$(this).attr("type", "button");
+  		}else{
+  			console.log("가보자고");
+  			
+  			const formData = new FormData();
+  			
+  			const files = $("#ex_file")[0].files;
+  			
+  			formData.append("mNo", mNo);
+  			formData.append("mentoName", mentoName);
+  			formData.append("mentoId", mentoId);
+ 			formData.append("mentoMajor", major);
+  			formData.append("mojorTheme", mojorTheme);
+  			for(let i = 0; i < fileArr.length; i++){
+  				formData.append("exFile", files[i]);
+  			}
+  			
+  			$.ajax({
+  				url : "/insertMento.do",
+  				type : "post",
+  				contentType: false,               // * 중요 *
+	  		    processData: false,               // * 중요 *
+	  		    enctype : 'multipart/form-data',
+  				data : formData,
+  				success : function(data){
+  					console.log(data);
+  					
+  				}
+  			});
+  			
+  			$(this).attr("type", "button");
+  		}
+  		
+  		
+  	});
+  
   	$(".mojor").on("click", function(){
   		
   		const index = $(".mojor").index(this);
@@ -329,10 +451,10 @@
   		console.log($("[name=mentoMajor]").eq(index).val());
   		
   		if(!$("input[name=mentoMajor]").eq(index).prop("checked")){
-  			$(this).css("background-color", "#99FF66");
+  			$(this).css("border-color", "#5fcf80").css("color", "#5fcf80");
   			console.log($("input[name=mentoMajor]").eq(index).prop("checked"));
   		}else{
-  			$(this).css("background-color", "#5fcf80");
+  			$(this).css("border-color", "lightgray").css("color", "lightgray");
   			console.log("0");
   		}
   		
@@ -347,30 +469,30 @@
 		const mojorTheme = $("[name=mojorTheme]").eq(index).val();
 		
 		if(mojorTheme == "문과"){
-			$(".theme").eq(0).css("background-color", "#99FF66");
-			$(".theme").eq(1).css("background-color", "#5fcf80");
-			$(".theme").eq(2).css("background-color", "#5fcf80");
+			$(".theme").eq(0).css("border-color", "#5fcf80").css("color", "#5fcf80");
+			$(".theme").eq(1).css("border-color", "gray").css("color", "gray");
+			$(".theme").eq(2).css("border-color", "gray").css("color", "gray");
 			$(".moon-content").show();
 			$(".lee-content").hide();
 			$(".yeah-content").hide();
 		}else if(mojorTheme == "이과"){
-			$(".theme").eq(1).css("background-color", "#99FF66");
-			$(".theme").eq(0).css("background-color", "#5fcf80");
-			$(".theme").eq(2).css("background-color", "#5fcf80");
+			$(".theme").eq(1).css("border-color", "#5fcf80").css("color", "#5fcf80");
+			$(".theme").eq(0).css("border-color", "gray").css("color", "gray");
+			$(".theme").eq(2).css("border-color", "gray").css("color", "gray");
 			$(".lee-content").show();
 			$(".moon-content").hide();
 			$(".yeah-content").hide();
 		}else{
-			$(".theme").eq(2).css("background-color", "#99FF66");
-			$(".theme").eq(0).css("background-color", "#5fcf80");
-			$(".theme").eq(1).css("background-color", "#5fcf80");
+			$(".theme").eq(2).css("border-color", "#5fcf80").css("color", "#5fcf80");
+			$(".theme").eq(0).css("border-color", "gray").css("color", "gray");
+			$(".theme").eq(1).css("border-color", "gray").css("color", "gray");
 			$(".yeah-content").show();
 			$(".moon-content").hide();
 			$(".lee-content").hide();
 		}
 	});
 	
-	
+	$(".theme").eq(0).click();
 	
   </script>
 
