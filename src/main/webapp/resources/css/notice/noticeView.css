@@ -1,1 +1,26 @@
 @charset "UTF-8";
+.tb{
+	border: none;
+    text-align: center;
+    width: 100%;
+}
+td,th{
+	border: 1px solid #6c757d73 !important;
+}
+.ta{
+	text-align: left;
+}
+.riteBtn{
+	border: 1px solid #5fcf80;
+	background-color: #5fcf80;
+	color:#fff;
+	border-radius: 40px;
+}
+.listBtn{
+	width:65%;
+	text-align: right;
+	margin: 0 auto;
+}
+
+
+

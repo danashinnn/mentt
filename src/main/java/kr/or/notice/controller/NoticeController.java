@@ -3,6 +3,7 @@ package kr.or.notice.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.notice.model.service.NoticeService;
@@ -14,6 +15,7 @@ public class NoticeController {
 	@Autowired
 	private NoticeService service;
 	
+	//공지사항 
 	@RequestMapping(value="/noticeList.do")
 	public String boardList(int reqPage, Model model) {
 		/*
@@ -44,10 +46,32 @@ public class NoticeController {
 		return "notice/noticeList";	
 	}
 	
+	//공지사항 상세보기
 	@RequestMapping(value="/noticeView.do")
 	public String noticeView(int noticeNo, Model model) {
 		Notice n = service.selectOneNotice(noticeNo);
 		model.addAttribute("n",n);
 		return "notice/noticeView";
+	}
+	
+	//공지사항 작성하기 폼으로 이동
+	@RequestMapping(value="/noticeWriteFrm.do")
+	public String noticeWriteFrm() {
+		return "notice/noticeWriteFrm";
+	}
+	
+	//공지사항 작성
+	@RequestMapping(value="/noticeWrite.do")
+	public String noticeWrite(Notice n, Model model) {
+		System.out.println("공지사항 n:"+n);
+		int result = service.insertNotice(n);
+		System.out.println("결과result"+result);
+		if(result>0) {
+			return "redirect:/noticeList.do?reqPage=1";
+		}else {
+			model.addAttribute("msg", "글쓰기에 실패하셨습니다.");
+			model.addAttribute("url","/noticeList.do?reqPage=1");
+			return "alert";
+		}
 	}
 }

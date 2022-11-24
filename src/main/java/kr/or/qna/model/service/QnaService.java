@@ -87,24 +87,33 @@ public class QnaService {
 	}
 
 	public Qna selectQnaView(int qnaNo) {
-		Qna q = dao.selectQnaView(qnaNo);
-		ArrayList<FileVO> fileList = dao.selectFileList(qnaNo);
-		q.setFileList(fileList);
-		return q;
+		int result = dao.updateQnaReadCount(qnaNo);
+		if(result > 0) {
+			Qna q = dao.selectQnaView(qnaNo);
+			ArrayList<FileVO> fileList = dao.selectFileList(qnaNo);
+			q.setFileList(fileList);			
+			return q;
+		} else {
+			return null;
+		}
 	}
 
 	public int insertQna(Qna q, ArrayList<FileVO> fileList) {
 		int result = dao.insertQna(q);
+		int qnaNo = 0;
 		if(result > 0) {
-			int qnaNo = 0;
+			qnaNo = dao.selectQnaNo();
 			if(!fileList.isEmpty()) {
-				qnaNo = dao.selectQnaNo();
 				for(FileVO file : fileList) {
 					file.setReqNo(qnaNo);
 					result += dao.insertFile(file);
 				}
 			}
 		}
-		return result;
+		return qnaNo;
+	}
+
+	public FileVO selectOneFile(int fileNo) {
+		return dao.selectOneFile(fileNo);
 	}
 }

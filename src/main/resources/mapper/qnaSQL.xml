@@ -45,11 +45,27 @@
 		INSERT INTO QNA_TBL VALUES(QNA_SEQ.NEXTVAL, 2, #{qnaTitle}, #{qnaContent}, 0, TO_CHAR(SYSDATE, 'YYYY-MM-DD'), #{qnaWriter}, null, 'N')
 	</insert>
 	
-	<select id="selectQnaNo">
+	<select id="selectQnaNo" resultType="int">
 		select max(qna_no) from qna_tbl
 	</select>
 	
 	<insert id="insertFile">
 		insert into file_tbl values(file_seq.nextval, #{filename}, #{filepath}, #{fileExt}, 'Q', #{reqNo}, 'N')
 	</insert>
+	
+	<select id="selectOneFile" parameterType="int" resultType="f">
+		select
+			file_no as fileNo,
+			filename,
+			filepath,
+			file_ext as fileExt,
+			file_divi as fileDivi,
+			ref_no as refNo
+		from file_tbl
+		where file_no = #{_parameter}
+	</select>
+	
+	<update id="updateQnaReadCount" parameterType="int">
+		update qna_tbl set qna_read_count = (qna_read_count+1) where qna_no = #{_parameter}
+	</update>
 </mapper>
