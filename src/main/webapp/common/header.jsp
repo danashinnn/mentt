@@ -118,6 +118,14 @@
 			position: absolute;
 			right: 0px;
 		}
+		
+		.man>button{
+			height: 40px;
+			line-height: 40px;
+			background-color: #5fcf80;
+			border : 1px solid #5fcf80;
+			color: white;
+		}
 	</style>
     <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
@@ -434,7 +442,14 @@
   				data : formData,
   				success : function(data){
   					console.log(data);
+  					$(".w3-container>div").hide();
   					
+  					const div = $("<div style='text-align: center;'>");
+  					div.append("<h1 style='text-align: center;'>멘토 등록 완료</h1>")
+  					div.append("<img src='/resources/img/센세.png'>");
+  					div.append("<div class='man' style='margin-bottom: 40px;'><button>멘토페이지로 이동</button></div>");
+  					
+  					$(".w3-container").eq(1).append(div);
   				}
   			});
   			
