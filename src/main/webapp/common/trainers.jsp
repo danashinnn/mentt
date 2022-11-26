@@ -16,8 +16,8 @@
     <!-- ======= Breadcrumbs ======= -->
     <div class="breadcrumbs">
       <div class="container">
-        <h2>Trainers</h2>
-        <p>Est dolorum ut non facere possimus quibusdam eligendi voluptatem. Quia id aut similique quia voluptas sit quaerat debitis. Rerum omnis ipsam aperiam consequatur laboriosam nemo harum praesentium. </p>
+        <h2>멘토 찾기</h2>
+        <p>자신이 원하는 과목을 선택하여 멘토를 선택하세요!</p>
       </div>
     </div><!-- End Breadcrumbs -->
 
@@ -28,7 +28,7 @@
         <div class="row" data-aos="zoom-in" data-aos-delay="100">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="/resources/assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">
+             <!-- <img src="/resources/assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">  --> 
               <div class="member-content">
                 <h4>Walter White</h4>
                 <span>Web Development</span>

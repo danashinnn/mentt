@@ -126,6 +126,10 @@
 			border : 1px solid #5fcf80;
 			color: white;
 		}
+		
+		table tr{
+			height: 50px;
+		}
 	</style>
     <!-- ======= Header ======= -->
   <header id="header" class="fixed-top">
@@ -140,7 +144,7 @@
           <li><a class="active" href="/">Home</a></li>
           <li><a href="/common/about.jsp">About</a></li>
           <li><a href="/common/courses.jsp">Courses</a></li>
-          <li><a href="/common/trainers.jsp">Trainers</a></li>
+          <li><a href="/selectAllMento.do?reqPage=1">Trainers</a></li>
           <li><a href="/common/events.jsp">이벤트</a></li>
           <li><a href="/noticeList.do?reqPage=1">공지사항</a></li>
           <li><a href="/common/pricing.jsp">가격안내</a></li>
@@ -205,107 +209,71 @@
 		      	</div>
 	      </div>
 	      
-	      <div style="border-bottom: 1px solid lightgray; padding-bottom: 50px;">
-	      	<div style="text-align: center; margin-top: 50px;">
-	      		<h2>공통과목</h2>
-	      	</div>
-	      	
-	      	<div style="text-align: center; margin-top: 30px;">
-	      		<label for="kor" class="mojor" style="margin-right: 10px;">국어</label>
-		      	<input type="checkbox" id="kor" name="mentoMajor" value="국어" style="display: none;">
-		      	
-		      	<label for="gibaek" class="mojor" style="margin-left: 10px; margin-right: 10px;">기하와 벡터</label>
-		      	<input type="checkbox" id="gibaek" name="mentoMajor" value="기하와 백터" style="display: none;">
-		      	
-		      	<label for="stats" class="mojor" style="margin-left: 10px; margin-right: 10px;">확률과 통계</label>
-		      	<input type="checkbox" id="stats" name="mentoMajor" value="확률과통계" style="display: none;">
-		      	
-		      	<label for="eng" class="mojor" style="margin-left: 10px;">영어</label>
-		      	<input type="checkbox" id="eng" name="mentoMajor" value="영어" style="display: none;">
-	      	</div>
-	      </div>
-	      
 	      <div style="text-align: center; margin-top: 50px;">
-	      	<label for="moon" class="theme">문과</label>
-	      	<input type="radio" id="moon" name="mojorTheme" value="문과" style="display: none;">
-	      	<label for="lee" class="theme" style="margin-left: 30px; margin-right: 30px;">이과</label>
-	      	<input type="radio" id="lee" name="mojorTheme" value="이과" style="display: none;">
-	      	<label for="yeah" class="theme">예체능</label>
-	      	<input type="radio" id="yeah" name="mojorTheme" value="예체능" style="display: none;">
+	      	<label for="moon" class="theme">프론트엔드</label>
+	      	<input type="radio" id="moon" name="mojorTheme" value="프론트엔드" style="display: none;">
+	      	<label for="lee" class="theme" style="margin-left: 30px; margin-right: 30px;">백엔드</label>
+	      	<input type="radio" id="lee" name="mojorTheme" value="백엔드" style="display: none;">
 	      </div>
 	      
 	      <div class="moon-content" style="margin-top: 50px; text-align: center; border-bottom: 1px solid lightgray; border-top: 1px solid lightgray; padding-top:30px; padding-bottom:30px;">
 	      	
-	      	<label for="ethics" class="mojor" style="margin-left: 10px; margin-right: 10px;">생활과윤리</label>
-	      	<input type="checkbox" id="ethics" name="mentoMajor" value="생활과윤리" style="display: none;">
+	      	<label for="ethics" class="mojor" style="margin-left: 10px; margin-right: 10px;">HTML</label>
+	      	<input type="checkbox" id="ethics" name="mentoMajor" value="HTML" style="display: none;">
 	      	
-	      	<label for="culture" class="mojor" style="margin-left: 10px; margin-right: 10px;">사회문화</label>
-	      	<input type="checkbox" id="culture" name="mentoMajor" value="사회문화" style="display: none;">
+	      	<label for="culture" class="mojor" style="margin-left: 10px; margin-right: 10px;">CSS</label>
+	      	<input type="checkbox" id="culture" name="mentoMajor" value="CSS" style="display: none;">
 	      	
-	      	<label for="korearth" class="mojor" style="margin-left: 10px; margin-right: 10px;">한국지리</label>
-	      	<input type="checkbox" id="korearth" name="mentoMajor" value="한국지리" style="display: none;">
+	      	<label for="korearth" class="mojor" style="margin-left: 10px; margin-right: 10px;">Javascript</label>
+	      	<input type="checkbox" id="korearth" name="mentoMajor" value="Javascript" style="display: none;">
 	      	
-	      	<label for="nationearth" class="mojor" style="margin-left: 10px; margin-right: 10px;">세계지리</label>
-	      	<input type="checkbox" id="nationearth" name="mentoMajor" value="세계지리" style="display: none;">
-	      	
-	      	<label for="thought" class="mojor" style="margin-left: 10px; margin-right: 10px;">윤리와 사상</label>
-	      	<input type="checkbox" id="thought" name="mentoMajor" value="윤리와 사상" style="display: none;">
+	      	<label for="nationearth" class="mojor" style="margin-left: 10px; margin-right: 10px;">jQuery</label>
+	      	<input type="checkbox" id="nationearth" name="mentoMajor" value="jQuery" style="display: none;">
 	      	
 	      	<br>
 	      	<br>
 	      	
-	      	<label for="rule" class="mojor" style="margin-left: 10px; margin-right: 10px;">법과 정치</label>
-	      	<input type="checkbox" id="rule" name="mentoMajor" value="법과 정치" style="display: none;">
+	      	<label for="thought" class="mojor" style="margin-left: 10px; margin-right: 10px;">Ajax</label>
+	      	<input type="checkbox" id="thought" name="mentoMajor" value="Ajax" style="display: none;">
 	      	
-	      	<label for="asia" class="mojor" style="margin-left: 10px; margin-right: 10px;">동아시아사</label>
-	      	<input type="checkbox" id="asia" name="mentoMajor" value="동아시아사" style="display: none;">
+	      	<label for="rule" class="mojor" style="margin-left: 10px; margin-right: 10px;">React</label>
+	      	<input type="checkbox" id="rule" name="mentoMajor" value="React" style="display: none;">
 	      	
-	      	<label for="world" class="mojor" style="margin-left: 10px; margin-right: 10px;">세계사</label>
-	      	<input type="checkbox" id="world" name="mentoMajor" value="세계사" style="display: none;">
+	      	<label for="asia" class="mojor" style="margin-left: 10px; margin-right: 10px;">VueJs</label>
+	      	<input type="checkbox" id="asia" name="mentoMajor" value="VueJs" style="display: none;">
 	      	
-	      	<label for="economic" class="mojor">경제</label>
-	      	<input type="checkbox" id="economic" name="mentoMajor" value="경제" style="display: none;">
+	      	<label for="world" class="mojor" style="margin-left: 10px; margin-right: 10px;">Angular</label>
+	      	<input type="checkbox" id="world" name="mentoMajor" value="Angular" style="display: none;">
+	      	
 	      </div>
 	      
 	      <div class="lee-content" style="margin-top: 50px; text-align: center; border-bottom: 1px solid lightgray; border-top: 1px solid lightgray; padding-top:30px; padding-bottom:30px; display: none;">
-	      	<label for="life1" class="mojor">생명과학1</label>
-	      	<input type="checkbox" id="life1" name="mentoMajor" value="생명과학1" style="display: none;">
+	      	<label for="life1" class="mojor">JAVA</label>
+	      	<input type="checkbox" id="life1" name="mentoMajor" value="JAVA" style="display: none;">
 	      	
-	      	<label for="chemi1" class="mojor" style="margin-left: 10px; margin-right: 10px;">화확1</label>
-	      	<input type="checkbox" id="chemi1" name="mentoMajor" value="화확1" style="display: none;">
+	      	<label for="chemi1" class="mojor" style="margin-left: 10px; margin-right: 10px;">PHP</label>
+	      	<input type="checkbox" id="chemi1" name="mentoMajor" value="PHP" style="display: none;">
 	      	
-	      	<label for="earth1" class="mojor" style="margin-left: 10px; margin-right: 10px;">지구과학1</label>
-	      	<input type="checkbox" id="earth1" name="mentoMajor" value="지구과학1" style="display: none;">
+	      	<label for="earth1" class="mojor" style="margin-left: 10px; margin-right: 10px;">PYTHON</label>
+	      	<input type="checkbox" id="earth1" name="mentoMajor" value="PYTHON" style="display: none;">
 	      	
-	      	<label for="physical1" class="mojor">물리1</label>
-	      	<input type="checkbox" id="physical1" name="mentoMajor" value="물리1" style="display: none;">
+	      	<label for="physical1" class="mojor">Node.js</label>
+	      	<input type="checkbox" id="physical1" name="mentoMajor" value="Node.js" style="display: none;">
 	      	
 	      	<br>
 	      	<br>
 	      	
-	      	<label for="life2" class="mojor">생명과학2</label>
-	      	<input type="checkbox" id="life2" name="mentoMajor" value="생명과학2" style="display: none;">
+	      	<label for="life2" class="mojor">C#</label>
+	      	<input type="checkbox" id="life2" name="mentoMajor" value="C#" style="display: none;">
 	      	
-	      	<label for="chemi2" class="mojor" style="margin-left: 10px; margin-right: 10px;">화확2</label>
-	      	<input type="checkbox" id="chemi2" name="mentoMajor" value="화확2" style="display: none;">
+	      	<label for="chemi2" class="mojor" style="margin-left: 10px; margin-right: 10px;">C++</label>
+	      	<input type="checkbox" id="chemi2" name="mentoMajor" value="C++" style="display: none;">
 	      	
-	      	<label for="earth2" class="mojor" style="margin-left: 10px; margin-right: 10px;">지구과학2</label>
-	      	<input type="checkbox" id="earth2" name="mentoMajor" value="지구과학2" style="display: none;">
+	      	<label for="earth2" class="mojor" style="margin-left: 10px; margin-right: 10px;">C언어</label>
+	      	<input type="checkbox" id="earth2" name="mentoMajor" value="C언어" style="display: none;">
 	      	
-	      	<label for="physical2" class="mojor">물리2</label>
-	      	<input type="checkbox" id="physical2" name="mentoMajor" value="물리2" style="display: none;">
-	      </div>
-	      
-	      <div class="yeah-content" style="margin-top: 50px; text-align: center; border-bottom: 1px solid lightgray; border-top: 1px solid lightgray; padding-top:30px; padding-bottom:30px; display: none;">
-	      	
-	      	<label for="music" class="mojor">음악</label>
-	      	<input type="checkbox" id="music" name="mentoMajor" value="음악" style="display: none;">
-	      	
-	      	<label for="art" class="mojor" style="margin-left: 10px; margin-right: 10px;">미술</label>
-	      	<input type="checkbox" id="art" name="mentoMajor" value="미술" style="display: none;">
-	      	
-	      	<label for="exercise" class="mojor">체육</label>
-	      	<input type="checkbox" id="exercise" name="mentoMajor" value="체육" style="display: none;">
+	      	<label for="physical2" class="mojor">Spring</label>
+	      	<input type="checkbox" id="physical2" name="mentoMajor" value="Spring" style="display: none;">
 	      </div>
 	      
 	      <div class="mentoLicense" style=" margin-top: 50px;">
@@ -328,6 +296,37 @@
 	      	
 	      </div>
 	      
+	      <div style="margin : 0 auto; margin-top: 30px; border-top: 1px solid lightgray;">
+	      	<table style="width: 800px; margin: 0 auto; margin-top: 30px;">
+	      		<tr>
+	      			<th style="text-align: center;">대표경력</th>
+	      			<td>
+	      				<input class="w3-input w3-border w3-round-large" type="text" name="representCareer">
+	      			</td>
+	      		</tr>
+	      		
+	      		<tr>
+	      			<th style="text-align: center;">경력</th>
+	      			<td>
+	      				<input class="w3-input w3-border w3-round-large" type="text" name="career">
+	      			</td>
+	      		</tr>
+	      	</table>
+	      	<div style="text-align: right; margin-right: 35px;">
+	      		<button onclick="moreBtn()" style="width: 100px; height: 50px; background-color: #5fcf80; border: none; color: white;">경력추가</button>
+	      	</div>
+	      	
+	      </div>
+	      
+	      <div style="margin : 0 auto; margin-top: 30px; border-top: 1px solid lightgray;">
+	      	<p style="margin-top: 20px; margin-left: 50px;">소개글</p>
+	      	<div class="form-floating" style="margin-top: 10px; margin-left: 50px;">
+				<textarea class="form-control" placeholder="Leave a comment here"
+					name="mentoComment" id="floatingTextarea2" style="height: 100px; resize: none; width: 750px;"></textarea>
+				<label for="floatingTextarea2">나를 소개하는 글을 남겨보세요!</label>
+			</div>
+	      </div>
+	      
 	      <div class="mentoBtnFrm" style="text-align: center; margin-top: 50px; border-top: 1px solid lightgray; padding-top: 50px; margin-bottom: 50px;">
 	      	<button type="button" class="btn btn-success" style="background-color: #5fcf80; border-color: #5fcf80;" id="insertMento">등록하기</button>
 	      </div>
@@ -343,6 +342,11 @@
   
   <script type="text/javascript">
   
+  	function moreBtn(){
+  		const tr = $("<tr>");
+  		const th = $("<th>경력</th>");
+  		const td = $("<td></td>")
+  	}
   
   	const fileArr = new Array();
   	
@@ -406,7 +410,7 @@
   			major += $(this).val();
   		});
   		const mojorTheme = $("[name=mojorTheme]:checked").val();
-  		
+  		const mentoComment = $("[name=mentoComment]").val();
   		
   		if($("[name=mentoMajor]:checked").length > 5){
   			alert("최대 5개를 선택할 수 있습니다.");
@@ -416,6 +420,9 @@
   			$(this).attr("type", "button");
   		}else if($("[name=mentoMajor]:checked").length != fileArr.length){
   			alert("선택 수와 같은 파일을 넣어야 합니다.");
+  			$(this).attr("type", "button");
+  		}else if($("[name=mentoComment]").val() == ""){
+  			alert("소개글을 입력하세요");
   			$(this).attr("type", "button");
   		}else{
   			console.log("가보자고");
@@ -432,7 +439,7 @@
   			for(let i = 0; i < fileArr.length; i++){
   				formData.append("exFile", files[i]);
   			}
-  			
+  			formData.append("mentoComment", mentoComment);
   			$.ajax({
   				url : "/insertMento.do",
   				type : "post",
@@ -447,7 +454,7 @@
   					const div = $("<div style='text-align: center;'>");
   					div.append("<h1 style='text-align: center;'>멘토 등록 완료</h1>")
   					div.append("<img src='/resources/img/센세.png'>");
-  					div.append("<div class='man' style='margin-bottom: 40px;'><button>멘토페이지로 이동</button></div>");
+  					div.append("<div class='man' style='margin-bottom: 40px;'><button onclick='goMentoPage(" + formData.get("mNo") + ");'>멘토페이지로 이동</button></div>");
   					
   					$(".w3-container").eq(1).append(div);
   				}
@@ -458,6 +465,10 @@
   		
   		
   	});
+  	
+  	function goMentoPage(mNo){
+  		location.href = "/mentoPage.do?mNo=" + mNo;
+  	}
   
   	$(".mojor").on("click", function(){
   		
@@ -483,27 +494,20 @@
 		
 		const mojorTheme = $("[name=mojorTheme]").eq(index).val();
 		
-		if(mojorTheme == "문과"){
+		if(mojorTheme == "프론트엔드"){
 			$(".theme").eq(0).css("border-color", "#5fcf80").css("color", "#5fcf80");
 			$(".theme").eq(1).css("border-color", "gray").css("color", "gray");
-			$(".theme").eq(2).css("border-color", "gray").css("color", "gray");
+			
 			$(".moon-content").show();
 			$(".lee-content").hide();
-			$(".yeah-content").hide();
-		}else if(mojorTheme == "이과"){
+			
+		}else if(mojorTheme == "백엔드"){
 			$(".theme").eq(1).css("border-color", "#5fcf80").css("color", "#5fcf80");
 			$(".theme").eq(0).css("border-color", "gray").css("color", "gray");
-			$(".theme").eq(2).css("border-color", "gray").css("color", "gray");
+			
 			$(".lee-content").show();
 			$(".moon-content").hide();
-			$(".yeah-content").hide();
-		}else{
-			$(".theme").eq(2).css("border-color", "#5fcf80").css("color", "#5fcf80");
-			$(".theme").eq(0).css("border-color", "gray").css("color", "gray");
-			$(".theme").eq(1).css("border-color", "gray").css("color", "gray");
-			$(".yeah-content").show();
-			$(".moon-content").hide();
-			$(".lee-content").hide();
+			
 		}
 	});
 	

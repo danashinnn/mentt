@@ -3,7 +3,7 @@
 <mapper namespace="mento">
   <insert id="insertMento" parameterType="mt">
   	insert into mento_tbl
-  	values(#{mNo}, #{mentoId}, #{mentoName}, #{mentoMajor}, 'D', 0, 'N', #{mojorTheme})
+  	values(#{mNo}, #{mentoId}, #{mentoName}, #{mentoMajor}, 'D', 0, 'N', #{mojorTheme}, #{mentoComment})
   </insert>
   
   <select id="selectMentoNo" resultType="int">
@@ -14,4 +14,68 @@
   	insert into file_tbl
   	values(file_seq.nextval, #{filename}, #{filepath}, #{fileExt}, 'M', #{reqNo}, 'n')
   </insert>
+  
+  <select id="selectOnemento" parameterType="int" resultType="mt">
+  	select 
+  		m_seq as mNo,
+  		mento_id as mentoId, 
+  		mento_name as mentoName,
+  		mento_major as mentoMajor, 
+  		mento_grade as mentoGrade, 
+  		auth_status as authStatus,
+  		del_yn as delYn,
+  		mento_theme as mojorTheme,
+  		mento_comment as mentoComment
+  	from mento_tbl where m_seq = #{_parameter}
+  </select>
+  
+  <select id="selectAllLicence" parameterType="int" resultType="mtl">
+  	select
+  		* 
+  		from file_tbl
+  		where file_divi = 'M' and ref_no = #{_parameter}
+  </select>
+  
+  <select id="selectAllMento" parameterType="map" resultType="mt">
+  	select * from
+		(select rownum as rnum, m.* from
+		(select
+		    m_seq as mNo,
+		    mento_id as mentoId,
+		    mento_name as mentoName,
+		    mento_major as mentoMajor,
+		    mento_grade as mentoGrade,
+		    auth_status as authStatus,
+		    del_yn as delYn,
+		    mento_theme as mojorTheme,
+  			mento_comment as mentoComment
+		    from mento_tbl)m) where rnum between #{start} and #{end} order by 1 desc
+  </select>
+  
+  <select id="selectMentoCnt" resultType="int">
+  	select count(*) from mento_tbl
+  </select>
 </mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

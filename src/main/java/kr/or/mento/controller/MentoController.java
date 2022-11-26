@@ -5,11 +5,13 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -77,6 +79,29 @@ public class MentoController {
 		}else {
 			return "0";
 		}
+	}
+	
+	@RequestMapping(value="/mentoPage.do")
+	public String mentoPage(int mNo, Model model) {
+		HashMap<String, Object> map = service.selectOneMento(mNo);
+		
+		model.addAttribute("mento", map.get("mento"));
+		
+		return "mento/mentoPage";
+	}
+	
+	@RequestMapping(value="/selectAllMento.do")
+	public String selectAllMento(int reqPage, Model model) {
+		HashMap<String, Object> map = service.selectAllMento(reqPage);
+		
+		if(map == null) {
+			model.addAttribute("msg", "아직 등록한 멘토가 없습니다.");
+		}else {
+			model.addAttribute("list", map.get("list"));
+			model.addAttribute("pageNavi", map.get("pageNavi"));
+		}
+		
+		return "mento/trainers";
 	}
 }
 
