@@ -297,7 +297,7 @@
 	      </div>
 	      
 	      <div style="margin : 0 auto; margin-top: 30px; border-top: 1px solid lightgray;">
-	      	<table style="width: 800px; margin: 0 auto; margin-top: 30px;">
+	      	<table class="careerTbl" style="width: 800px; margin: 0 auto; margin-top: 30px;">
 	      		<tr>
 	      			<th style="text-align: center;">대표경력</th>
 	      			<td>
@@ -343,9 +343,14 @@
   <script type="text/javascript">
   
   	function moreBtn(){
+  		console.log("가보자고");
+  		
   		const tr = $("<tr>");
-  		const th = $("<th>경력</th>");
-  		const td = $("<td></td>")
+  		const th = $("<th style='text-align: center;'>경력</th>");
+  		const td = $("<td><input class='w3-input w3-border w3-round-large' type='text' name='career'></td>")
+  		
+  		tr.append(th).append(td);
+  		$(".careerTbl").append(tr);
   	}
   
   	const fileArr = new Array();
@@ -399,6 +404,7 @@
   		console.log($("[name=mentoMajor]:checked").length);
 		
   		let major = "";
+  		let career = "";
   		
   		const mNo = $("[name=mNo]").val();
   		const mentoName = $("[name=mentoName]").val();
@@ -411,6 +417,13 @@
   		});
   		const mojorTheme = $("[name=mojorTheme]:checked").val();
   		const mentoComment = $("[name=mentoComment]").val();
+  		const representCareer = $("[name=representCareer]").val();
+  		$("[name=career]").each(function(index){
+  			if(index != 0){
+  				career += ",";
+  			}
+  			career += $(this).val();
+  		});
   		
   		if($("[name=mentoMajor]:checked").length > 5){
   			alert("최대 5개를 선택할 수 있습니다.");
@@ -440,6 +453,9 @@
   				formData.append("exFile", files[i]);
   			}
   			formData.append("mentoComment", mentoComment);
+  			formData.append("representCareer", representCareer);
+  			formData.append("career", career);
+  			
   			$.ajax({
   				url : "/insertMento.do",
   				type : "post",

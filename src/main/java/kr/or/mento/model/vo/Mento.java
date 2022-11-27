@@ -19,5 +19,7 @@ public class Mento {
 	private int authStatus;
 	private String delYn;
 	private String mentoComment;
+	private String representCareer;
+	private String career;
 	private ArrayList<MentoLiseceFile> mentoList;
 }

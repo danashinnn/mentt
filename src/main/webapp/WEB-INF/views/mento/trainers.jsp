@@ -60,19 +60,15 @@
           			<div class="col-lg-4 col-md-6 d-flex align-items-stretch" style="width: 400px; margin: 0 auto;">
 		            <div class="member" style="width: 400px;">
 		             <!-- <img src="/resources/assets/img/trainers/trainer-1.jpg" class="img-fluid" alt="">  --> 
-		              <div class="member-content" style="margin-top: 20px;">
+		              <div class="member-content" style="margin-top: 50px;">
 		                <h4>${mt.mentoName }</h4>
 		                <span>${mt.mojorTheme }</span>
 		                <span>${mt.mentoMajor }</span>
+		                <span>대표경력 : ${mt.representCareer }</span>
 		                <p>
 		                  ${mt.mentoComment }
 		                </p>
-		                <div class="social">
-		                  <a href=""><i class="bi bi-twitter"></i></a>
-		                  <a href=""><i class="bi bi-facebook"></i></a>
-		                  <a href=""><i class="bi bi-instagram"></i></a>
-		                  <a href=""><i class="bi bi-linkedin"></i></a>
-		                </div>
+		                
 		              </div>
 		            </div>
 		          </div>
